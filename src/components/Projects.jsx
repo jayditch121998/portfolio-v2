@@ -24,19 +24,30 @@ const Projects = () => {
 
                             <div className="card-body">
                                 <ul className="project-details">
-                                    {project.details.slice(0, 3).map((detail, idx) => (
-                                        <li key={idx}>{detail}</li>
+                                    {project.details.map((detail, idx) => (
+                                        <li
+                                            key={idx}
+                                            className={idx >= 3 ? 'desktop-hidden' : ''}
+                                        >
+                                            {detail}
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
 
                             <div className="card-footer">
                                 <div className="tech-tags">
-                                    {project.technologies.slice(0, 4).map((tech, idx) => (
-                                        <span key={idx} className="tech-badge">{tech}</span>
+                                    {project.technologies.map((tech, idx) => (
+                                        <span
+                                            key={idx}
+                                            className={`tech-badge ${idx >= 4 ? 'desktop-hidden' : ''}`}
+                                        >
+                                            {tech}
+                                        </span>
                                     ))}
+
                                     {project.technologies.length > 4 && (
-                                        <div className="tech-badge more-tech">
+                                        <div className="tech-badge more-tech mobile-hidden">
                                             +{project.technologies.length - 4}
                                             <div className="tooltip">
                                                 {project.technologies.slice(4).map((tech, idx) => (

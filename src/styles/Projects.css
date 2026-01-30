@@ -20,7 +20,7 @@
     transition: all var(--transition-medium);
     position: relative;
     overflow: visible;
-    /* To allow tooltips to pop out */
+    /* Crucial for tooltips */
 }
 
 .project-card:hover {
@@ -28,7 +28,7 @@
     border-color: var(--accent-primary);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     z-index: 50;
-    /* Ensure hovered card and its tooltip are on top of others */
+    /* Ensure hovered card stays on top */
 }
 
 .card-header {
@@ -106,7 +106,7 @@
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Tooltip Styles */
+/* Desktop Tooltip Layout */
 .more-tech {
     position: relative;
     cursor: help;
@@ -141,36 +141,34 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
-    /* Theme aware shadow */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .tooltip {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
-.tooltip::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent var(--accent-primary) transparent;
-}
-
-/* Inner arrow to match bg */
+/* Tooltip Arrows */
+.tooltip::after,
 .tooltip::before {
     content: '';
     position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border-width: 7px;
     border-style: solid;
+}
+
+.tooltip::after {
+    border-width: 8px;
+    border-color: transparent transparent var(--accent-primary) transparent;
+}
+
+.tooltip::before {
+    border-width: 7px;
     border-color: transparent transparent var(--bg-primary) transparent;
     z-index: 1;
+    /* Match inner background */
 }
 
 .more-tech:hover .tooltip {
@@ -182,39 +180,50 @@
 .tooltip-tag {
     font-size: 0.75rem;
     background: var(--bg-tertiary);
-    /* Use tertiary for tag contrast */
     color: var(--text-primary);
     padding: 5px 12px;
     border-radius: 8px;
     border: 1px solid var(--border-color);
-    transition: all 0.2s ease;
 }
 
-.tooltip-tag:hover {
-    border-color: var(--accent-primary);
-    background: var(--accent-glow);
+/* Visibility Control */
+.desktop-hidden {
+    display: none !important;
 }
 
-/* Responsive adjustments */
+/* --- MOBILE VIEW --- */
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
     }
 
     .project-card {
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.5rem;
     }
 
+    /* SHOW ALL CONTENT ON MOBILE */
+    .desktop-hidden {
+        display: block !important;
+    }
+
+    span.desktop-hidden {
+        display: inline-block !important;
+        /* Keep badges as pills */
+    }
+
+    .mobile-hidden {
+        display: none !important;
+        /* Hide "+X" badge */
+    }
+
+    /* Adjust Tag Size */
+    .tech-badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    /* Disable Desktop Tooltip Logic */
     .tooltip {
-        left: 0;
-        right: 0;
-        width: auto;
-        max-width: none;
-    }
-
-    .tooltip::after {
-        right: auto;
-        left: 50%;
-        margin-left: -8px;
+        display: none !important;
     }
 }
