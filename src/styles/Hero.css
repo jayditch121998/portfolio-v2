@@ -6,6 +6,13 @@
     position: relative;
     overflow: hidden;
     padding-top: var(--header-height);
+    background: var(--bg-primary);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background: transparent;
+    }
 }
 
 /* Background shapes removed as requested */

@@ -3,6 +3,12 @@
     padding: 6rem 0;
 }
 
+@media (max-width: 768px) {
+    .projects-section {
+        background: transparent;
+    }
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

@@ -90,8 +90,8 @@ body {
   letter-spacing: 0.01em;
 
   /* Subtle Dot Grid Background */
-  background-image: radial-gradient(var(--text-muted) 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(var(--text-muted) 0.8px, transparent 0.8px);
+  background-size: 32px 32px;
   background-attachment: fixed;
   /* Keeps pattern static while scrolling */
 }
@@ -196,6 +196,7 @@ p {
 
 .text-gradient {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

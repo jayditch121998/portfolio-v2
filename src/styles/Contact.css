@@ -1,6 +1,13 @@
 .contact-section {
     padding-bottom: 8rem;
     overflow: hidden;
+    background: var(--bg-primary);
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        background: transparent;
+    }
 }
 
 .contact-wrapper {
@@ -205,8 +212,14 @@
 .footer {
     background: var(--bg-secondary);
     padding: 3rem 0;
-    border-top: 1px solid var(--bg-tertiary);
+    border-top: 1px solid var(--border-color);
     margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        background: transparent;
+    }
 }
 
 .footer-content {
