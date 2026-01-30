@@ -1,0 +1,222 @@
+/* Header container */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 9999;
+    /* Ensure it stays on top of everything */
+    transition: all var(--transition-medium);
+    background: var(--bg-header);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header.scrolled {
+    height: 70px;
+    background: var(--bg-header-scrolled);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo span {
+    color: var(--accent-primary);
+}
+
+/* Desktop Navigation */
+.nav-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .nav-desktop {
+        display: flex;
+        gap: 2rem;
+    }
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-secondary);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+@media (min-width: 768px) {
+    .mobile-toggle {
+        display: none;
+    }
+}
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all var(--transition-fast);
+}
+
+/* Hamburger Animation */
+.mobile-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.mobile-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Mobile Menu Overlay - Full Screen Glass */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-primary);
+    /* Theme aware */
+    color: var(--text-primary);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+
+    /* Animation: Fade + Scale */
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glass effect support */
+@supports (backdrop-filter: blur(20px)) {
+    .mobile-menu {
+        background: var(--bg-header);
+        /* Semi-transparent theme aware */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+}
+
+.mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.mobile-nav-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.mobile-nav-link {
+    font-size: 2.5rem;
+    /* Large, bold typography */
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    transition: all 0.3s ease;
+
+    /* Initial state for stagger */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.mobile-menu.open .mobile-nav-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-nav-link:hover {
+    color: var(--accent-primary);
+    padding-left: 0;
+    /* Remove old shift */
+    transform: scale(1.05);
+    /* Subtle scale up */
+}
+
+/* Active Link Indicator (Optional idea) */
+.mobile-nav-link::after {
+    display: none;
+    /* No underline for this clean look */
+}
+
+.mobile-menu-footer {
+    position: absolute;
+    bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    /* Animation */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.3s;
+    /* Delayed entry */
+}
+
+.mobile-menu.open .mobile-menu-footer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Removed separate .backdrop as menu handles it */

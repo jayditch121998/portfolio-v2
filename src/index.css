@@ -1,0 +1,201 @@
+:root {
+  /* Color Palette - Dark Grey / Charcoal (Premium) */
+  --bg-primary: #121212;
+  /* Very dark grey, almost black */
+  --bg-secondary: #1e1e1e;
+  /* Dark grey for cards */
+  --bg-tertiary: #2d2d2d;
+  /* Lighter grey for borders/inputs */
+
+  --text-primary: #f3f4f6;
+  /* Off-white for readability */
+  --text-secondary: #d1d5db;
+  /* Light grey */
+  --text-muted: #9ca3af;
+  /* Muted grey */
+
+  /* Accents - Kept Blue but can be adjusted */
+  --accent-primary: #38bdf8;
+  --accent-secondary: #818cf8;
+  --accent-glow: rgba(56, 189, 248, 0.2);
+
+  /* Header Variables */
+  --bg-header: rgba(18, 18, 18, 0.8);
+  --bg-header-scrolled: rgba(18, 18, 18, 0.95);
+  --border-color: rgba(255, 255, 255, 0.08);
+
+  /* Project Card Variables */
+  --bg-card-footer: rgba(30, 30, 30, 0.6);
+  --bg-tech-badge: rgba(255, 255, 255, 0.08);
+  --text-tech-badge: var(--text-muted);
+
+  /* Typography */
+  --font-main: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* Spacing & Layout */
+  --container-width: 1200px;
+  --header-height: 80px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+}
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --bg-tertiary: #e2e8f0;
+
+  --bg-header: rgba(255, 255, 255, 0.85);
+  --bg-header-scrolled: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(0, 0, 0, 0.08);
+
+  --bg-card-footer: #e2e8f0;
+  /* Slate 200 - Solid light grey for clarity */
+  --bg-tech-badge: #ffffff;
+  /* White badges */
+  --text-tech-badge: var(--text-secondary);
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  --accent-primary: #0284c7;
+  --accent-secondary: #4f46e5;
+  --accent-glow: rgba(2, 132, 199, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* Ensure body also prevents overflow */
+  max-width: 100%;
+  letter-spacing: 0.01em;
+
+  /* Subtle Dot Grid Background */
+  background-image: radial-gradient(var(--text-muted) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  background-attachment: fixed;
+  /* Keeps pattern static while scrolling */
+}
+
+/* Animations */
+.fade-up-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, visibility;
+}
+
+.fade-up-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children if needed (optional utility) */
+.stagger-1 {
+  transition-delay: 100ms;
+}
+
+.stagger-2 {
+  transition-delay: 200ms;
+}
+
+.stagger-3 {
+  transition-delay: 300ms;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-primary);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* --- Global Typography Hierarchy --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  /* Responsive H1 */
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  /* Ensure body text is distinct */
+}
+
+/* Utilities */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 8rem 0;
+  /* Increased from 5rem for premium spacing */
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

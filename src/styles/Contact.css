@@ -1,0 +1,254 @@
+.contact-section {
+    padding-bottom: 8rem;
+    overflow: hidden;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Left Column: Info */
+.contact-header-text h3 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.contact-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--bg-secondary);
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+    width: 100%;
+    /* Ensure full width alignment */
+    box-sizing: border-box;
+    /* Prevent padding from breaking layout */
+}
+
+.contact-card:hover {
+    transform: translateX(5px);
+    border-color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.05);
+}
+
+.contact-card .icon {
+    font-size: 1.5rem;
+    background: var(--bg-primary);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+    /* Prevent icon squishing */
+}
+
+.contact-card div {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; removed to keep value left-aligned */
+    flex: 1;
+    /* Take up remaining space */
+}
+
+.contact-card .label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    /* Increased spacing for centered look */
+    margin-bottom: 0.25rem;
+    width: 100%;
+    /* Ensure full width for centering */
+    text-align: left;
+    /* Align left */
+}
+
+.contact-card .value {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+    /* Explicitly left-align value */
+    padding-left: 0;
+    /* Remove offset padding */
+}
+
+/* Clickable Card Variant */
+.contact-card.clickable-card {
+    text-decoration: none;
+    /* Remove link underline */
+    cursor: pointer;
+    transition: all var(--transition-medium);
+}
+
+.contact-card.clickable-card:hover {
+    transform: translateX(5px) scale(1.02);
+    border-color: var(--accent-primary);
+    background: rgba(56, 189, 248, 0.1);
+    /* Slightly stronger hover bg */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card.clickable-card:hover .value {
+    color: var(--accent-primary);
+    /* Only highlight text on hover for consistency */
+}
+
+/* Right Column: Form */
+.glass-form {
+    background: var(--bg-secondary);
+    padding: 2.5rem;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px var(--accent-glow);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.submit-btn.success {
+    background: #10b981;
+    /* Green */
+}
+
+.error-msg {
+    color: #ef4444;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Footer Styles */
+.footer {
+    background: var(--bg-secondary);
+    padding: 3rem 0;
+    border-top: 1px solid var(--bg-tertiary);
+    margin-top: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.footer-logo span {
+    color: var(--accent-primary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-link {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: color var(--transition-fast);
+}
+
+.social-link:hover {
+    color: var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
