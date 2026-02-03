@@ -82,6 +82,8 @@ Actively exploring artificial intelligence integration and building workflow aut
                     ],
                     details: [
                         "Developed a high-performance platform to facilitate efficient content moderation.",
+                        "Optimized heavy database queries to improve platform responsiveness and handle large datasets.",
+                        "Created automated reporting tools to track moderation metrics and system health.",
                         "Reduced processing delays by using Redis and Socket.io for real-time communication.",
                         "Integrated AI tools through APIs to automate content flagging.",
                         "Acted as Project maintainer, participating in project meetings and key decisions.",
@@ -100,6 +102,7 @@ Actively exploring artificial intelligence integration and building workflow aut
                     ],
                     details: [
                         "Designed and developed a comprehensive HR management system (onboarding, leave, payroll, performance).",
+                        "Contributed major enhancements across key HR system modules, including Employee Management, Attendance, and Finance, while helping integrate AI-driven automation.",
                         "Architected the database schema for efficient data storage and retrieval.",
                         "Ensured secure handling of sensitive employee data with optimized queries.",
                     ],
@@ -120,6 +123,23 @@ Actively exploring artificial intelligence integration and building workflow aut
                         "Designed the database schema for efficient filtering, segmentation, and reporting.",
                         "Implemented validation and deduplication logic.",
                         "Implemented Google OAuth for secure user authentication.",
+                    ],
+                },
+                {
+                    name: "Recruitment System",
+                    technologies: [
+                        "Laravel",
+                        "React.js",
+                        "MySQL",
+                        "Docker",
+                        "Rest APIs",
+                        "MaterialUI"
+                    ],
+                    details: [
+                        "Led the development of full-stack features to modernize the recruitment process, building intuitive user interfaces and robust backend logic.",
+                        "Integrated advanced AI-driven automation to assist in filtering and evaluating candidate applications, significantly cutting down manual screening time.",
+                        "Successfully bridged the platform with various third-party APIs to handle external candidate data and automated communication flows.",
+                        "Collaborated on refining the recruitment pipeline, ensuring a smooth and responsive experience for both recruiters and applicants."
                     ],
                 }
 
@@ -145,13 +165,14 @@ Actively exploring artificial intelligence integration and building workflow aut
                     ],
                 },
                 {
-                    name: "Instagram Reels Data Fetcher",
-                    technologies: ["Meta API", "PHP", "Laravel", "React", "Third-party API"],
+                    name: "Instagram and Tiktok reels data fetcher and analyzer",
+                    technologies: ["Meta API", "PHP", "Laravel", "React", "n8n", "OpenAI", "Third-party API"],
                     details: [
                         "Integrated Meta’s official API to search for Instagram users.",
-                        "Utilized a third-party API to fetch Instagram Reels content.",
-                        "Designed and implemented a system to search and display Reels based on user queries.",
-                        "Optimized data-fetching for speed and reliability.",
+                        "Utilized a third-party API to fetch Instagram and TikTok Reels content.",
+                        "Created an n8n workflow that fetches Instagram and TikTok reels then analyzes them (extracting hooks, identifying topics, rewriting scripts, etc.).",
+                        "Designed and implemented a system to search, analyze, and display Reels based on user queries.",
+                        "Optimized data-fetching and AI analysis for speed and reliability.",
                     ],
                 },
             ],

@@ -11,42 +11,98 @@
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
 
-.project-card {
-    background: var(--bg-primary);
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: all var(--transition-medium);
-    position: relative;
-    overflow: visible;
-    /* Crucial for tooltips */
+@media (max-width: 1100px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
+/* Stable Grid Footprint - The static trigger */
+.project-card-wrapper {
+    position: relative;
+    height: 480px;
+    z-index: 10;
+    pointer-events: auto;
+    transition: z-index 0s;
+    /* Instant lift on hover */
+}
+
+.project-card-wrapper:hover {
+    z-index: 1001;
+    /* CRITICAL: Lift parent stacking context above other rows */
+}
+
+.project-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-primary);
+    /* Force solid color */
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    /* Compact padding */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* Stable card look on hover */
+.project-card-wrapper:hover .project-card {
+    z-index: 1000;
+    /* Ensure it floats above the next row */
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    z-index: 50;
-    /* Ensure hovered card stays on top */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    transform: translateY(-12px);
+    /* Increased lift for separation */
+    background: #121212 !important;
+    /* Force solid background to fix ghosting */
+    pointer-events: auto;
+    overflow: visible;
+    /* CRITICAL: Show tooltips even if not expanding */
+}
+
+/* Expansion - Only if JS detects overflow */
+.project-card-wrapper:hover .project-card.is-expandable {
+    max-height: 2000px;
+    height: auto;
+    min-height: 100%;
+    overflow: visible;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+    /* Stronger shadow on expand */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), max-height 0.8s ease;
 }
 
 .card-header {
-    margin-bottom: 2rem;
+    height: 85px;
+    /* Further reduced to fix bulky whitespace */
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .card-title {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+    /* Limit title to 3 lines to keep header height stable */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-role {
@@ -58,12 +114,28 @@
 }
 
 .card-body {
-    flex-grow: 1;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    min-height: 0;
+}
+
+/* Edge Fade Indicator */
+.card-body.is-overflowing {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.project-card-wrapper:hover .card-body {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    overflow: visible;
 }
 
 .project-details {
     list-style: none;
-    margin-bottom: 2rem;
 }
 
 .project-details li {
@@ -83,10 +155,69 @@
     font-weight: bold;
 }
 
+/* Absolute Positioning for the Hint to fix Footer alignment */
+.hover-hint {
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    right: 0;
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    opacity: 0.8;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(to top, var(--bg-primary) 80%, transparent);
+    padding: 1rem 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.hover-hint::after {
+    content: '↓';
+    animation: bounce-subtle 2s infinite;
+}
+
+.project-card-wrapper:hover .hover-hint {
+    opacity: 0 !important;
+    visibility: hidden;
+}
+
+@keyframes bounce-subtle {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(3px);
+    }
+
+    60% {
+        transform: translateY(2px);
+    }
+}
+
 .card-footer {
-    margin-top: auto;
-    padding-top: 1.5rem;
+    padding-top: 0.75rem;
     border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+    background: #121212 !important;
+    /* Force solid to prevent chip ghosting */
+    position: relative;
+    z-index: 30;
+    height: 75px;
+    /* Compact height */
+    display: flex;
+    align-items: center;
 }
 
 .tech-tags {
@@ -107,12 +238,11 @@
     transition: all 0.3s ease;
 }
 
-.project-card:hover .tech-badge:not(.more-tech) {
+.project-card-wrapper:hover .tech-badge:not(.more-tech) {
     color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Desktop Tooltip Layout */
 .more-tech {
     position: relative;
     cursor: help;
@@ -120,11 +250,6 @@
     border-color: var(--accent-primary) !important;
     background: rgba(56, 189, 248, 0.1) !important;
     font-weight: 700;
-}
-
-.more-tech:hover {
-    background: var(--accent-primary) !important;
-    color: var(--bg-primary) !important;
 }
 
 .tooltip {
@@ -150,33 +275,6 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="dark"] .tooltip {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-}
-
-/* Tooltip Arrows */
-.tooltip::after,
-.tooltip::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-style: solid;
-}
-
-.tooltip::after {
-    border-width: 8px;
-    border-color: transparent transparent var(--accent-primary) transparent;
-}
-
-.tooltip::before {
-    border-width: 7px;
-    border-color: transparent transparent var(--bg-primary) transparent;
-    z-index: 1;
-    /* Match inner background */
-}
-
 .more-tech:hover .tooltip {
     visibility: visible;
     opacity: 1;
@@ -192,43 +290,47 @@
     border: 1px solid var(--border-color);
 }
 
-/* Visibility Control */
 .desktop-hidden {
     display: none !important;
 }
 
-/* --- MOBILE VIEW --- */
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
     }
 
     .project-card {
+        position: relative;
+        height: auto !important;
         padding: 2.5rem 1.5rem;
     }
 
-    /* SHOW ALL CONTENT ON MOBILE */
+    .project-card-wrapper {
+        height: auto;
+    }
+
+    .card-body {
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+    }
+
     .desktop-hidden {
         display: block !important;
     }
 
     span.desktop-hidden {
         display: inline-block !important;
-        /* Keep badges as pills */
     }
 
     .mobile-hidden {
         display: none !important;
-        /* Hide "+X" badge */
     }
 
-    /* Adjust Tag Size */
     .tech-badge {
         font-size: 0.75rem;
         padding: 0.3rem 0.7rem;
     }
 
-    /* Disable Desktop Tooltip Logic */
     .tooltip {
         display: none !important;
     }
