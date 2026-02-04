@@ -116,6 +116,15 @@
     /* Emoji visuals */
 }
 
+.skill-one-liner {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-top: -0.5rem;
+    margin-bottom: 0.25rem;
+    opacity: 0.8;
+}
+
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
@@ -128,14 +137,21 @@
     border: 1px solid var(--border-color);
     padding: 0.5rem 1rem;
     border-radius: 10px;
-    /* Pillow shape tags */
     font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: default;
 }
 
-.skill-tag:hover {
+.skill-tag.is-highlight {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--text-primary);
+    border-color: rgba(56, 189, 248, 0.4);
+    font-weight: 600;
+}
+
+.skill-tag:hover,
+.skill-tag.is-highlight:hover {
     color: var(--bg-primary);
     border-color: var(--accent-primary);
     background: var(--accent-primary);

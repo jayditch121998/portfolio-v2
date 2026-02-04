@@ -15,32 +15,44 @@ const Experience = () => {
     return (
         <section id="experience" className="section skills-experience">
             <FadeInSection className="container">
-                <h2 className="section-title">Skills & <span className="text-gradient">Experience</span></h2>
+                <h2 className="section-title">Technical Focus & <span className="text-gradient">Experience</span></h2>
 
                 {/* Skills Section */}
                 <div className="skills-container">
                     <div className="skills-wrapper bento-grid">
                         {Object.entries(skills).map(([category, items]) => {
                             const icons = {
-                                languages: "💻",
-                                automation: "⚡",
+                                frameworks: "�️",
                                 databases: "🗄️",
+                                apis: "⚡",
+                                infrastructure: "�️",
+                                languages: "�",
                                 versionControl: "🌱",
-                                frameworks: "🛠️",
-                                others: "🔧"
+                                aiTools: "🤖"
                             };
 
-                            const isWide = items.length > 5 || category === 'frameworks';
+                            const isWide = category === 'frameworks' || category === 'apis';
 
                             return (
                                 <div key={category} className={`skill-card ${isWide ? 'bento-wide' : ''}`}>
                                     <h3 className="skill-category-title">
                                         <span className="category-icon">{icons[category]}</span>
-                                        {category.charAt(0).toUpperCase() + category.slice(1).replace(/([A-Z])/g, ' $1')}
+                                        {category === 'apis' ? 'APIs & Automation' :
+                                            category === 'infrastructure' ? 'Infrastructure' :
+                                                category === 'aiTools' ? 'AI Development Tools' :
+                                                    category.charAt(0).toUpperCase() + category.slice(1).replace(/([A-Z])/g, ' $1')}
                                     </h3>
+                                    {resumeData.skillDescriptions[category] && (
+                                        <p className="skill-one-liner">{resumeData.skillDescriptions[category]}</p>
+                                    )}
                                     <div className="skill-tags">
                                         {items.map((skill) => (
-                                            <span key={skill} className="skill-tag">{skill}</span>
+                                            <span
+                                                key={skill}
+                                                className="skill-tag"
+                                            >
+                                                {skill}
+                                            </span>
                                         ))}
                                     </div>
                                 </div>

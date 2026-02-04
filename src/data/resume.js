@@ -9,24 +9,24 @@ export const resumeData = {
     },
     summary: `Full-stack developer with 4+ years of experience building and maintaining scalable web applications. I’ve worked on high-traffic platforms, developing robust backend systems with Node.js, Laravel, and MySQL, and crafting responsive, modern frontends using React.js and Material-UI (MUI). Skilled in designing efficient database schemas and integrating RESTful APIs.
 
-Actively exploring artificial intelligence integration and building workflow automation solutions using AI-powered tools and bots to enhance productivity and streamline complex processes.`,
+Actively leveraging AI-driven development tools like Antigravity and Cursor to streamline full-stack engineering across both frontend and backend, while building custom AI automation solutions and multi-agent workflows to enhance productivity and streamline complex processes.`,
     skills: {
-        languages: ["PHP", "JavaScript"],
-        automation: ["n8n", "Make.com"],
-        databases: ["MySQL", "MariaDB", "MongoDB"],
-        versionControl: ["Git", "GitHub", "GitLab"],
         frameworks: ["Laravel", "React.js", "Node.js", "Material UI"],
-        others: [
-            "Docker",
-            "CI/CD",
-            "Redis",
-            "Postman",
-            "Socket.io",
-            "REST APIs",
-            "AWS (S3, EC2, RDS, Route 53)",
-            "Automation",
-            "OpenAI (fine-tuning)",
-        ],
+        databases: ["MySQL", "MariaDB", "MongoDB"],
+        apis: ["n8n", "Make.com", "OpenAI (fine-tuning)", "REST APIs", "Socket.io", "Automation"],
+        infrastructure: ["Docker", "CI/CD", "AWS (S3, EC2, RDS, Route 53)", "Redis"],
+        languages: ["PHP", "JavaScript"],
+        versionControl: ["Git", "GitHub", "GitLab"],
+        aiTools: ["Antigravity", "Cursor"],
+    },
+    skillDescriptions: {
+        frameworks: "Frontend and backend frameworks for building scalable apps.",
+        databases: "Relational and document databases used in production systems.",
+        apis: "Workflow automation, AI agents, and system orchestration.",
+        infrastructure: "Cloud services, containerization, and deployment pipelines.",
+        languages: "High-level programming languages for modern web development.",
+        versionControl: "Source code management and team collaboration tools.",
+        aiTools: "Advanced AI-powered environments like Antigravity and Cursor for accelerated Front and Back-end development.",
     },
     experience: [
         {
