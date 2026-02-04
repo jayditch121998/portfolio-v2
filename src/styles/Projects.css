@@ -63,7 +63,7 @@
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
     transform: translateY(-12px);
     /* Increased lift for separation */
-    background: #121212 !important;
+    background: var(--bg-primary) !important;
     /* Force solid background to fix ghosting */
     pointer-events: auto;
     overflow: visible;
@@ -210,14 +210,20 @@
     padding-top: 0.75rem;
     border-top: 1px solid var(--border-color);
     flex-shrink: 0;
-    background: #121212 !important;
-    /* Force solid to prevent chip ghosting */
+    background-color: var(--bg-card-footer) !important;
     position: relative;
     z-index: 30;
     height: 75px;
-    /* Compact height */
     display: flex;
     align-items: center;
+}
+
+/* Force light background in light mode */
+html[data-theme="light"] .card-footer,
+[data-theme="light"] .card-footer {
+    background-color: #f1f5f9 !important;
+    background: #f1f5f9 !important;
+    border-top-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 .tech-tags {
@@ -241,6 +247,10 @@
 .project-card-wrapper:hover .tech-badge:not(.more-tech) {
     color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .project-card-wrapper:hover .tech-badge:not(.more-tech) {
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .more-tech {
