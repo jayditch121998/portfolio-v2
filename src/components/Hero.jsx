@@ -20,6 +20,10 @@ const Hero = () => {
                     <span style={{ fontSize: '0.9em', display: 'block', marginTop: '10px', maxWidth: '600px', marginInline: 'auto' }}>
                         Building scalable web applications and automating workflows with AI.
                     </span>
+                    <span className="hero-learning-tag">
+                        <span className="pulse-dot"></span>
+                        Currently exploring: <span className="highlight-text">Python</span>
+                    </span>
                 </p>
 
                 <div className="hero-cta">
