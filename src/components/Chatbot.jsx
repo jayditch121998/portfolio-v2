@@ -1,0 +1,179 @@
+import { useState, useRef, useEffect } from 'react';
+import '../styles/Chatbot.css';
+import { resumeData } from '../data/resume';
+
+const Chatbot = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [messages, setMessages] = useState([
+        { type: 'bot', text: "Hi there! I'm Jayditch's AI assistant. Ask me anything about his skills, projects, or experience!" }
+    ]);
+    const [inputValue, setInputValue] = useState("");
+    const [isTyping, setIsTyping] = useState(false);
+
+    const messagesEndRef = useRef(null);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages, isTyping, isOpen]);
+
+    const toggleChat = () => setIsOpen(!isOpen);
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSend();
+        }
+    };
+
+    const generateResponse = (query) => {
+        const lowerQuery = query.toLowerCase();
+
+        // Greetings
+        if (lowerQuery.match(/\b(hi|hello|hey|yo|greetings)\b/)) {
+            return "Hello! How can I help you today? Would you like to know about my projects or skills?";
+        }
+
+        // Contact Info
+        if (lowerQuery.match(/\b(contact|email|phone|reach|location|address)\b/)) {
+            const { email, phone, location, linkedin } = resumeData.personalInfo;
+            return `You can reach Jayditch via email at ${email} or call ${phone}. He is located in ${location}.`;
+        }
+
+        // Skills / Tech Stack
+        if (lowerQuery.match(/\b(skill|stack|technology|tech|framework|language|tool)\b/)) {
+            const allFrameworks = resumeData.skills.frameworks.join(", ");
+            const allLanguages = resumeData.skills.languages.join(", ");
+            return `Jayditch is proficient in:
+            \n- Languages: ${allLanguages}
+            \n- Frameworks: ${allFrameworks}
+            \n- AI Tools: ${resumeData.skills.aiTools.join(", ")}`;
+        }
+
+        // Specific Tech Checks
+        if (lowerQuery.includes('react') || lowerQuery.includes('javascript') || lowerQuery.includes('node')) {
+            return "Yes! Jayditch has extensive experience with the React/Node.js ecosystem. Check out his projects section for examples.";
+        }
+
+        if (lowerQuery.includes('php') || lowerQuery.includes('laravel')) {
+            return "Absolutely. Jayditch has used Laravel for several enterprise-level projects, including HR and Content Moderation systems.";
+        }
+
+        if (lowerQuery.includes('python')) {
+            return "Jayditch is currently learning Python to expand his capabilities in AI and data science.";
+        }
+
+        // Experience
+        if (lowerQuery.match(/\b(experience|work|job|history|career)\b/)) {
+            const latest = resumeData.experience[0];
+            return `Jayditch is currently a ${latest.role} at ${latest.company}. Before that, he worked at ${resumeData.experience[1].company} and ${resumeData.experience[2].company}.`;
+        }
+
+        // Projects
+        if (lowerQuery.match(/\b(project|portfolio|build|app|website)\b/)) {
+            const projectNames = resumeData.experience.flatMap(exp => exp.projects.map(p => p.name)).slice(0, 3).join(", ");
+            return `Some notable projects include: ${projectNames}, and more! He specializes in full-stack apps and automation tools.`;
+        }
+
+        // AI / Agents
+        if (lowerQuery.match(/\b(ai|agent|bot|automation|llm|gpt)\b/)) {
+            return "Jayditch is passionate about AI! He is an AI Automation Engineer at POP AI Technologies, building multi-agent workflows and integrating LLMs into business processes.";
+        }
+
+        // Hobbies/Personal (Fallback/Generic)
+        if (lowerQuery.match(/\b(who are you|what are you)\b/)) {
+            return "I am a virtual assistant designed to showcase Jayditch's professional background. I run on simple pattern matching logic, but Jayditch builds real AI agents!";
+        }
+
+        return "I'm not sure about that. Could you try asking about 'skills', 'projects', or 'contact info'?";
+    };
+
+    const handleSend = () => {
+        if (!inputValue.trim()) return;
+
+        const userText = inputValue;
+        setMessages(prev => [...prev, { type: 'user', text: userText }]);
+        setInputValue("");
+        setIsTyping(true);
+
+        // Simulate network delay
+        setTimeout(() => {
+            const botResponse = generateResponse(userText);
+            setMessages(prev => [...prev, { type: 'bot', text: botResponse }]);
+            setIsTyping(false);
+        }, 1000); // 1s delay for realism
+    };
+
+    return (
+        <div className="chatbot-container">
+            {isOpen && (
+                <div className="chatbot-window">
+                    <div className="chatbot-header">
+                        <h3>
+                            <span className="status-dot"></span>
+                            Jayditch Assistant
+                        </h3>
+                        <button className="close-btn" onClick={toggleChat}>&times;</button>
+                    </div>
+
+                    <div className="chatbot-messages">
+                        {messages.map((msg, index) => (
+                            <div key={index} className={`message ${msg.type}`}>
+                                {msg.text.split('\n').map((line, i) => (
+                                    <span key={i}>{line}<br /></span>
+                                ))}
+                            </div>
+                        ))}
+                        {isTyping && (
+                            <div className="typing-indicator">
+                                <span className="typing-dot"></span>
+                                <span className="typing-dot"></span>
+                                <span className="typing-dot"></span>
+                            </div>
+                        )}
+                        <div ref={messagesEndRef} />
+                    </div>
+
+                    <div className="chatbot-input-area">
+                        <input
+                            type="text"
+                            className="chatbot-input"
+                            placeholder="Ask a question..."
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <button
+                            className="send-btn"
+                            onClick={handleSend}
+                            disabled={!inputValue.trim()}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            <button className="chatbot-toggle" onClick={toggleChat} aria-label="Toggle Chat">
+                {isOpen ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                )}
+            </button>
+        </div>
+    );
+};
+
+export default Chatbot;

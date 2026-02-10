@@ -10,7 +10,6 @@ const Hero = () => {
     return (
         <section id="about" className="hero">
             <FadeInSection className="container hero-content">
-                <h2 className="hero-subtitle">Welcome to my portfolio</h2>
                 <h1 className="hero-title">
                     Hi, I'm <span className="hero-name text-gradient">{name}</span>
                 </h1>
