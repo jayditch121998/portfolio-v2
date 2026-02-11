@@ -1,0 +1,211 @@
+{
+    "profile": {
+        "name": "Jayditch Balansi",
+        "title": "Full-Stack Developer & AI Automation Engineer",
+        "experience_years": 4,
+        "location": "Philippines",
+        "summary": "Full-stack developer with over four years of experience building and maintaining scalable web applications and automation systems. Strong focus on backend development, API integrations, workflow automation, and AI-assisted tools."
+    },
+    "skills": {
+        "programming_languages": [
+            "PHP",
+            "JavaScript",
+            "Python"
+        ],
+        "backend": [
+            "Laravel",
+            "Node.js"
+        ],
+        "frontend": [
+            "React.js",
+            "Material UI",
+            "Tailwind CSS"
+        ],
+        "databases": [
+            "MySQL",
+            "MariaDB",
+            "MongoDB",
+            "Redis",
+            "PostgreSQL"
+        ],
+        "automation_and_ai": [
+            "n8n",
+            "Make.com",
+            "OpenAI Fine-tuning",
+            "LLMs",
+            "RAG (Retrieval-Augmented Generation)",
+            "AI Chatbots"
+        ],
+        "cloud_and_devops": [
+            "Docker",
+            "AWS S3",
+            "AWS EC2",
+            "AWS RDS",
+            "AWS Route 53",
+            "CI/CD"
+        ],
+        "tools_and_others": [
+            "Git",
+            "GitHub",
+            "GitLab",
+            "Postman",
+            "Socket.io",
+            "REST APIs"
+        ]
+    },
+    "experience": [
+        {
+            "company": "New Media Services",
+            "role": "Programmer / AI Automation Engineer",
+            "employment_type": "Full-time",
+            "location": "Baguio City, Philippines",
+            "period": "August 2021 - Present",
+            "summary": "Worked on high-traffic internal platforms focused on content moderation, HR systems, lead generation, and workflow automation.",
+            "projects": [
+                {
+                    "name": "Content Moderation Platform",
+                    "description": "Developed a high-performance content moderation system that connects clients, AI services, and human moderators to review text, images, and videos.",
+                    "technologies": [
+                        "Laravel",
+                        "Node.js",
+                        "React.js",
+                        "Material UI",
+                        "MySQL",
+                        "Redis",
+                        "Socket.io",
+                        "Docker",
+                        "AWS S3",
+                        "AWS SES"
+                    ],
+                    "responsibilities": [
+                        "Built scalable backend systems for content review workflows",
+                        "Integrated AI APIs for automated content flagging",
+                        "Implemented real-time communication using Redis and Socket.io",
+                        "Acted as project maintainer and participated in technical decision-making"
+                    ]
+                },
+                {
+                    "name": "Human Resource Management System",
+                    "description": "Designed and developed an HR management system to automate onboarding, leave management, payroll, and performance tracking.",
+                    "technologies": [
+                        "Laravel",
+                        "React.js",
+                        "Material UI",
+                        "MySQL",
+                        "Redis",
+                        "Docker"
+                    ],
+                    "responsibilities": [
+                        "Designed scalable database schemas for employee data",
+                        "Ensured secure handling of sensitive information",
+                        "Optimized queries for efficient data retrieval"
+                    ]
+                },
+                {
+                    "name": "Lead Generation System",
+                    "description": "Built a platform to automate collecting, managing, and tracking leads from multiple channels.",
+                    "technologies": [
+                        "Laravel",
+                        "React.js",
+                        "Material UI",
+                        "MySQL",
+                        "Redis",
+                        "Docker",
+                        "AWS SES"
+                    ],
+                    "responsibilities": [
+                        "Implemented lead validation and deduplication logic",
+                        "Designed database schema for filtering and segmentation",
+                        "Integrated Google OAuth for authentication"
+                    ]
+                },
+                {
+                    "name": "Automation and AI Systems",
+                    "description": "Developed automation workflows to replace manual processes using n8n and AI integrations.",
+                    "technologies": [
+                        "n8n",
+                        "JavaScript",
+                        "OpenAI Fine-tuning",
+                        "LLMs"
+                    ],
+                    "responsibilities": [
+                        "Built automated workflows for biometric validation",
+                        "Integrated fine-tuned AI models to improve accuracy",
+                        "Reduced manual intervention and processing time"
+                    ]
+                }
+            ]
+        },
+        {
+            "company": "iBestDesign",
+            "role": "Laravel Developer / AI Automation Engineer",
+            "employment_type": "Part-time",
+            "location": "Remote (Canada-based)",
+            "period": "April 2022 - December 2025",
+            "projects": [
+                {
+                    "name": "AI Image Generator and Editor",
+                    "description": "Developed an AI-powered image generation and editing platform using third-party AI services.",
+                    "technologies": [
+                        "Next.js",
+                        "Material UI",
+                        "Replicate AI"
+                    ],
+                    "responsibilities": [
+                        "Integrated AI image generation using text prompts",
+                        "Implemented region-based image editing using brush and bounding box selection",
+                        "Built an image gallery for AI-generated content"
+                    ]
+                },
+                {
+                    "name": "Instagram Reels Data Fetcher",
+                    "description": "Built a system to search Instagram users and fetch associated Reels content using official and third-party APIs.",
+                    "technologies": [
+                        "Laravel",
+                        "React.js",
+                        "Meta API",
+                        "Third-party APIs"
+                    ],
+                    "responsibilities": [
+                        "Integrated Meta API for Instagram user search",
+                        "Fetched and displayed Instagram Reels data",
+                        "Optimized API calls for performance and rate limits"
+                    ]
+                }
+            ]
+        },
+        {
+            "company": "Jigzen Technologies",
+            "role": "Software Developer",
+            "employment_type": "Full-time",
+            "location": "Baguio City, Philippines",
+            "period": "November 2020 - May 2021",
+            "projects": [
+                {
+                    "name": "Social Media Platform",
+                    "description": "Maintained and enhanced a social media system with video and file streaming features.",
+                    "technologies": [
+                        "PHP",
+                        "MySQL",
+                        "Bootstrap"
+                    ]
+                },
+                {
+                    "name": "ERP System",
+                    "description": "Contributed to the development and enhancement of an ERP system.",
+                    "technologies": [
+                        "Laravel",
+                        "MySQL",
+                        "Bootstrap",
+                        "jQuery"
+                    ]
+                }
+            ]
+        }
+    ],
+    "education": {
+        "degree": "Bachelor of Science in Information Technology",
+        "institution": "Saint Louis University",
+        "period": "2015 - 2020"
+    }
+}

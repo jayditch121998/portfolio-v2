@@ -14,13 +14,23 @@ app.use(cors());
 app.use(express.json());
 
 // Load knowledge data
-const knowledgePath = path.join(process.cwd(), 'src', 'data', 'knowledge.json');
+// In Vercel, it is best to bundle data files with the function.
+// We will read from the same directory as this file.
+const knowledgePath = path.join(process.cwd(), 'api', 'knowledge.json');
 let knowledgeData = {};
 try {
     const data = fs.readFileSync(knowledgePath, 'utf8');
     knowledgeData = JSON.parse(data);
 } catch (err) {
     console.error("Error reading knowledge.json:", err);
+    // Fallback: try relative to file URL if process.cwd is different
+    try {
+        const localPath = new URL('./knowledge.json', import.meta.url);
+        const data = fs.readFileSync(localPath, 'utf8');
+        knowledgeData = JSON.parse(data);
+    } catch (e2) {
+        console.error("Fallback error reading knowledge.json:", e2);
+    }
 }
 
 app.post('/api/chat', async (req, res) => {
