@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import '../styles/Chatbot.css';
 import { resumeData } from '../data/resume';
 
@@ -139,9 +140,7 @@ const Chatbot = () => {
                     <div className="chatbot-messages">
                         {messages.map((msg, index) => (
                             <div key={index} className={`message ${msg.type}`}>
-                                {msg.text.split('\n').map((line, i) => (
-                                    <span key={i}>{line}<br /></span>
-                                ))}
+                                <ReactMarkdown>{msg.text}</ReactMarkdown>
                             </div>
                         ))}
                         {isTyping && (
@@ -183,6 +182,9 @@ const Chatbot = () => {
             )}
 
             <button className="chatbot-toggle" onClick={toggleChat} aria-label="Toggle Chat">
+                {!isOpen && (
+                    <span className="chat-tooltip">Ask the assistant!</span>
+                )}
                 {isOpen ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>

@@ -32,6 +32,59 @@
     background: var(--accent-secondary);
 }
 
+.chat-tooltip {
+    position: absolute;
+    right: calc(100% + 1rem);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--accent-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: tooltipFadeIn 0.5s ease-out, tooltipPulse 3s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.chat-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--accent-primary);
+    border-right: 1px solid var(--accent-primary);
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes tooltipPulse {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+}
+
 .chatbot-icon {
     width: 30px;
     height: 30px;
@@ -112,7 +165,7 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
     background-color: var(--bg-primary);
 }
 
@@ -130,14 +183,45 @@
     color: var(--text-primary);
     border-radius: 12px 12px 12px 2px;
     border: 1px solid var(--border-color);
+    font-weight: 400;
 }
 
 .message.user {
     align-self: flex-end;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    color: white;
+    background: linear-gradient(135deg, #0284c7, #4f46e5);
+    color: #ffffff !important;
     border-radius: 12px 12px 2px 12px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+}
+
+.message p {
+    margin-bottom: 0.5rem;
+}
+
+.message p:last-child {
+    margin-bottom: 0;
+}
+
+.message a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.message.user a {
+    color: white;
+    text-decoration: underline;
+}
+
+.message a:hover {
+    color: var(--accent-secondary);
+    text-decoration: none;
+}
+
+.message.user a:hover {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Input Area */
@@ -265,5 +349,45 @@
     .chatbot-container {
         right: 1rem;
         bottom: 1rem;
+    }
+
+    .chat-tooltip {
+        right: 0;
+        bottom: calc(100% + 1rem);
+        animation: tooltipFadeInMobile 0.5s ease-out, tooltipPulseMobile 3s infinite ease-in-out;
+    }
+
+    .chat-tooltip::after {
+        top: 100%;
+        right: 25px;
+        transform: translateY(-50%) rotate(45deg);
+        border-top: none;
+        border-right: 1px solid var(--accent-primary);
+        border-bottom: 1px solid var(--accent-primary);
+        border-left: none;
+    }
+}
+
+@keyframes tooltipFadeInMobile {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes tooltipPulseMobile {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
     }
 }

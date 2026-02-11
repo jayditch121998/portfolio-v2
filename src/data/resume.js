@@ -212,6 +212,25 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
             ],
             otherResponsibilities: ["Code Documentation", "Assist across platforms"],
         },
+        {
+            role: "Independent Learner",
+            company: "Personal Projects",
+            type: "Self-Paced",
+            period: "Ongoing",
+            location: "Remote",
+            summary: "Building tools to learn Python and agentic AI frameworks.",
+            projects: [
+                {
+                    name: "Facebook Job Ad Poster",
+                    technologies: ["Python", "Agno", "AI Agents"],
+                    details: [
+                        "Built an automated tool to post job ads on Facebook using Python.",
+                        "Leveraged the Agno framework to implement agentic behaviors.",
+                        "This is a learning project demonstrating initial proficiency with Python and AI agents.",
+                    ]
+                }
+            ]
+        },
     ],
     education: [
         {

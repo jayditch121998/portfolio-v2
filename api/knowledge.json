@@ -4,6 +4,11 @@
         "title": "Full-Stack Developer & AI Automation Engineer",
         "experience_years": 4,
         "location": "Philippines",
+        "contact": {
+            "email": "balansijayditch@gmail.com",
+            "phone": "(+63) 968 338 5913",
+            "linkedin": "https://www.linkedin.com/in/jayditch-b-694a521b6"
+        },
         "summary": "Full-stack developer with over four years of experience building and maintaining scalable web applications and automation systems. Strong focus on backend development, API integrations, workflow automation, and AI-assisted tools."
     },
     "skills": {
@@ -32,6 +37,7 @@
             "n8n",
             "Make.com",
             "OpenAI Fine-tuning",
+            "Agno (Agent Framework)",
             "LLMs",
             "RAG (Retrieval-Augmented Generation)",
             "AI Chatbots"
@@ -199,6 +205,24 @@
                         "Bootstrap",
                         "jQuery"
                     ]
+                }
+            ]
+        },
+        {
+            "company": "Personal Projects",
+            "role": "Independent Learner",
+            "period": "Ongoing",
+            "summary": "Building tools to learn Python and agentic AI frameworks.",
+            "projects": [
+                {
+                    "name": "Facebook Job Ad Poster",
+                    "description": "An automated tool built using Python and the Agno framework to post job advertisements on Facebook.",
+                    "technologies": [
+                        "Python",
+                        "Agno",
+                        "AI Agents"
+                    ],
+                    "status": "Learning Project"
                 }
             ]
         }
