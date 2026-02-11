@@ -13,11 +13,8 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 // Load knowledge data
-const knowledgePath = path.join(__dirname, 'src', 'data', 'knowledge.json');
+const knowledgePath = path.join(process.cwd(), 'src', 'data', 'knowledge.json');
 let knowledgeData = {};
 try {
     const data = fs.readFileSync(knowledgePath, 'utf8');
@@ -73,6 +70,10 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
+
+export default app;
