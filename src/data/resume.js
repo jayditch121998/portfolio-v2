@@ -13,7 +13,7 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
     skills: {
         frameworks: ["Laravel", "React.js", "Node.js", "Material UI"],
         databases: ["MySQL", "MariaDB", "MongoDB"],
-        apis: ["n8n", "Make.com", "OpenAI (fine-tuning)", "REST APIs", "Socket.io", "Automation"],
+        apis: ["n8n", "Make.com", "OpenAI (fine-tuning)", "RAG (Retrieval-Augmented Generation)", "AI Chatbots", "REST APIs", "Socket.io", "Automation"],
         infrastructure: ["Docker", "CI/CD", "AWS (S3, EC2, RDS, Route 53)", "Redis"],
         languages: ["PHP", "JavaScript", "Python (Learning)"],
         versionControl: ["Git", "GitHub", "GitLab"],

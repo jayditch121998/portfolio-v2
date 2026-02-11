@@ -32,7 +32,9 @@
             "n8n",
             "Make.com",
             "OpenAI Fine-tuning",
-            "LLMs"
+            "LLMs",
+            "RAG (Retrieval-Augmented Generation)",
+            "AI Chatbots"
         ],
         "cloud_and_devops": [
             "Docker",
