@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import '../styles/Chatbot.css';
 import { resumeData } from '../data/resume';
-import knowledgeData from '../data/knowledge.json';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,55 +30,36 @@ const Chatbot = () => {
     };
 
     const generateResponse = async (userQuery) => {
-        const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-        if (!apiKey) {
-            console.warn("OpenAI API Key provided. Returning fallback response.");
-            return getFallbackResponse(userQuery);
-        }
-
-        const systemMessage = {
-            role: "system",
-            content: `You are an AI assistant for Jayditch's portfolio. 
-            Use the following JSON data to answer questions about Jayditch accurately and concisely.
-            Do not hallucinate. If the answer is not in the data, say you don't know but suggest contacting him directly.
-            Keep responses professional but friendly.
-
-            DATA: ${JSON.stringify(knowledgeData)}`
-        };
-
         try {
-            const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${apiKey}`
                 },
                 body: JSON.stringify({
-                    model: "gpt-4o",
                     messages: [
-                        systemMessage,
                         ...messages.slice(-10).filter(m => m.type !== 'error').map(m => ({
                             role: m.type === 'user' ? 'user' : 'assistant',
                             content: m.text
                         })),
                         { role: "user", content: userQuery }
-                    ],
-                    max_tokens: 300
+                    ]
                 })
             });
 
             const data = await response.json();
 
-            if (data.error) {
-                console.error("OpenAI API Error:", data.error);
-                return "I'm having trouble connecting to my brain right now. Please try again later.";
+            if (!response.ok || data.error) {
+                console.error("API Error:", data.error || response.statusText);
+                // Fallback to local logic if server fails or is offline
+                return getFallbackResponse(userQuery);
             }
 
             return data.choices[0].message.content;
 
         } catch (error) {
             console.error("Chatbot Error:", error);
+            // Fallback for network errors
             return getFallbackResponse(userQuery);
         }
     };
