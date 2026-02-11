@@ -59,7 +59,7 @@ const Chatbot = () => {
                     model: "gpt-4o",
                     messages: [
                         systemMessage,
-                        ...messages.filter(m => m.type !== 'error').map(m => ({
+                        ...messages.slice(-10).filter(m => m.type !== 'error').map(m => ({
                             role: m.type === 'user' ? 'user' : 'assistant',
                             content: m.text
                         })),
@@ -130,7 +130,7 @@ const Chatbot = () => {
     };
 
     const handleSend = async () => {
-        if (!inputValue.trim()) return;
+        if (!inputValue.trim() || isTyping) return;
 
         const userText = inputValue;
         setMessages(prev => [...prev, { type: 'user', text: userText }]);
@@ -175,18 +175,23 @@ const Chatbot = () => {
                     </div>
 
                     <div className="chatbot-input-area">
-                        <input
-                            type="text"
-                            className="chatbot-input"
-                            placeholder="Ask a question..."
-                            value={inputValue}
-                            onChange={(e) => setInputValue(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
+                        <div className="input-wrapper">
+                            <input
+                                type="text"
+                                className="chatbot-input"
+                                placeholder={isTyping ? "AI is thinking..." : "Ask a question..."}
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                disabled={isTyping}
+                                maxLength={300}
+                            />
+                            <span className="char-count">{inputValue.length}/300</span>
+                        </div>
                         <button
                             className="send-btn"
                             onClick={handleSend}
-                            disabled={!inputValue.trim()}
+                            disabled={!inputValue.trim() || isTyping}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="22" y1="2" x2="11" y2="13"></line>
