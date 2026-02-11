@@ -109,6 +109,13 @@ body {
   transform: none;
 }
 
+@media (max-width: 768px) {
+  .fade-up-section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Stagger children if needed (optional utility) */
 .stagger-1 {
   transition-delay: 100ms;

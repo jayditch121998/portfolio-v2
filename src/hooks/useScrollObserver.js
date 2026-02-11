@@ -9,11 +9,10 @@ const useScrollObserver = (options = {}) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    // Once visible, we can stop observing if we only want the animation once
                     if (domRef.current) observer.unobserve(domRef.current);
                 }
             });
-        }, { threshold: 0.1, ...options });
+        }, { threshold: 0, ...options });
 
         const currentRef = domRef.current;
         if (currentRef) {
@@ -25,7 +24,7 @@ const useScrollObserver = (options = {}) => {
                 observer.unobserve(currentRef);
             }
         };
-    }, [options]);
+    }, []); // Empty dependency array to run only once
 
     return [domRef, isVisible];
 };
