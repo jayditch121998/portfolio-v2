@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import '../styles/Chatbot.css';
 import { resumeData } from '../data/resume';
+import knowledgeData from '../data/knowledge.json';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,18 +30,72 @@ const Chatbot = () => {
         }
     };
 
-    const generateResponse = (query) => {
+    const generateResponse = async (userQuery) => {
+        const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
+        if (!apiKey) {
+            console.warn("OpenAI API Key provided. Returning fallback response.");
+            return getFallbackResponse(userQuery);
+        }
+
+        const systemMessage = {
+            role: "system",
+            content: `You are an AI assistant for Jayditch's portfolio. 
+            Use the following JSON data to answer questions about Jayditch accurately and concisely.
+            Do not hallucinate. If the answer is not in the data, say you don't know but suggest contacting him directly.
+            Keep responses professional but friendly.
+
+            DATA: ${JSON.stringify(knowledgeData)}`
+        };
+
+        try {
+            const response = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-4o",
+                    messages: [
+                        systemMessage,
+                        ...messages.filter(m => m.type !== 'error').map(m => ({
+                            role: m.type === 'user' ? 'user' : 'assistant',
+                            content: m.text
+                        })),
+                        { role: "user", content: userQuery }
+                    ],
+                    max_tokens: 300
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.error) {
+                console.error("OpenAI API Error:", data.error);
+                return "I'm having trouble connecting to my brain right now. Please try again later.";
+            }
+
+            return data.choices[0].message.content;
+
+        } catch (error) {
+            console.error("Chatbot Error:", error);
+            return getFallbackResponse(userQuery);
+        }
+    };
+
+    const getFallbackResponse = (query) => {
         const lowerQuery = query.toLowerCase();
 
         // Greetings
         if (lowerQuery.match(/\b(hi|hello|hey|yo|greetings)\b/)) {
-            return "Hello! How can I help you today? Would you like to know about my projects or skills?";
+            return "Hello! I am currently running in offline mode. How can I help you today?";
         }
 
         // Contact Info
         if (lowerQuery.match(/\b(contact|email|phone|reach|location|address)\b/)) {
-            const { email, phone, location, linkedin } = resumeData.personalInfo;
-            return `You can reach Jayditch via email at ${email} or call ${phone}. He is located in ${location}.`;
+            const { email, phone, location } = resumeData.personalInfo || {};
+            return `You can reach Jayditch via email (check resume) or find him in ${location || 'Philippines'}.`;
         }
 
         // Skills / Tech Stack
@@ -66,32 +121,15 @@ const Chatbot = () => {
             return "Jayditch is currently learning Python to expand his capabilities in AI and data science.";
         }
 
-        // Experience
-        if (lowerQuery.match(/\b(experience|work|job|history|career)\b/)) {
-            const latest = resumeData.experience[0];
-            return `Jayditch is currently a ${latest.role} at ${latest.company}. Before that, he worked at ${resumeData.experience[1].company} and ${resumeData.experience[2].company}.`;
-        }
-
-        // Projects
+        // Expanded Projects Context from Fallback
         if (lowerQuery.match(/\b(project|portfolio|build|app|website)\b/)) {
-            const projectNames = resumeData.experience.flatMap(exp => exp.projects.map(p => p.name)).slice(0, 3).join(", ");
-            return `Some notable projects include: ${projectNames}, and more! He specializes in full-stack apps and automation tools.`;
+            return "He has built various projects like a Content Moderation Platform, HR Systems, and AI Image Generators. Ask about specific stats!";
         }
 
-        // AI / Agents
-        if (lowerQuery.match(/\b(ai|agent|bot|automation|llm|gpt)\b/)) {
-            return "Jayditch is passionate about AI! He is an AI Automation Engineer at POP AI Technologies, building multi-agent workflows and integrating LLMs into business processes.";
-        }
-
-        // Hobbies/Personal (Fallback/Generic)
-        if (lowerQuery.match(/\b(who are you|what are you)\b/)) {
-            return "I am a virtual assistant designed to showcase Jayditch's professional background. I run on simple pattern matching logic, but Jayditch builds real AI agents!";
-        }
-
-        return "I'm not sure about that. Could you try asking about 'skills', 'projects', or 'contact info'?";
+        return "I'm currently offline and can only answer basic questions. Please add an OpenAI API Key to chat with my full AI brain!";
     };
 
-    const handleSend = () => {
+    const handleSend = async () => {
         if (!inputValue.trim()) return;
 
         const userText = inputValue;
@@ -99,12 +137,11 @@ const Chatbot = () => {
         setInputValue("");
         setIsTyping(true);
 
-        // Simulate network delay
-        setTimeout(() => {
-            const botResponse = generateResponse(userText);
-            setMessages(prev => [...prev, { type: 'bot', text: botResponse }]);
-            setIsTyping(false);
-        }, 1000); // 1s delay for realism
+        // Process response
+        const botResponse = await generateResponse(userText);
+
+        setIsTyping(false);
+        setMessages(prev => [...prev, { type: 'bot', text: botResponse }]);
     };
 
     return (
