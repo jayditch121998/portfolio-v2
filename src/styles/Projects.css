@@ -216,6 +216,7 @@
     height: 75px;
     display: flex;
     align-items: center;
+    padding-left: 1rem;
 }
 
 /* Force light background in light mode */
