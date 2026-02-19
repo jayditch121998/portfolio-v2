@@ -12,7 +12,7 @@ export const resumeData = {
 Actively leveraging AI-driven development tools like Antigravity and Cursor to streamline full-stack engineering across both frontend and backend, while building custom AI automation solutions and multi-agent workflows to enhance productivity and streamline complex processes.`,
     skills: {
         frameworks: ["Laravel", "React.js", "Node.js", "Material UI"],
-        databases: ["MySQL", "MariaDB", "MongoDB"],
+        databases: ["MySQL", "MariaDB", "MongoDB", "Supabase"],
         apis: ["n8n", "Make.com", "OpenAI (fine-tuning)", "RAG (Retrieval-Augmented Generation)", "AI Chatbots", "REST APIs", "Socket.io", "Automation"],
         infrastructure: ["Docker", "CI/CD", "AWS (S3, EC2, RDS, Route 53)", "Redis"],
         languages: ["PHP", "JavaScript", "Python (Learning)"],
@@ -218,7 +218,7 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
             type: "Self-Paced",
             period: "Ongoing",
             location: "Remote",
-            summary: "Building tools to learn Python and agentic AI frameworks.",
+            summary: "Expanding my stack with Supabase for real-time databases and building tools to learn Python and agentic AI frameworks.",
             projects: [
                 {
                     name: "Facebook Job Ad Poster",

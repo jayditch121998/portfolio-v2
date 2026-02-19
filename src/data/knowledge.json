@@ -31,7 +31,8 @@
             "MariaDB",
             "MongoDB",
             "Redis",
-            "PostgreSQL"
+            "PostgreSQL",
+            "Supabase"
         ],
         "automation_and_ai": [
             "n8n",
@@ -212,7 +213,7 @@
             "company": "Personal Projects",
             "role": "Independent Learner",
             "period": "Ongoing",
-            "summary": "Building tools to learn Python and agentic AI frameworks.",
+            "summary": "Expanding my tech stack with Supabase for real-time databases and building tools to learn Python and agentic AI frameworks.",
             "projects": [
                 {
                     "name": "Facebook Job Ad Poster",

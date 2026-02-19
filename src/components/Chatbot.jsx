@@ -102,6 +102,10 @@ const Chatbot = () => {
             return "Jayditch is currently learning Python to expand his capabilities in AI and data science.";
         }
 
+        if (lowerQuery.includes('supabase')) {
+            return "Jayditch recently added Supabase to his stack! He's using it for real-time databases and modern backend-as-a-service features.";
+        }
+
         // Expanded Projects Context from Fallback
         if (lowerQuery.match(/\b(project|portfolio|build|app|website)\b/)) {
             return "He has built various projects like a Content Moderation Platform, HR Systems, and AI Image Generators. Ask about specific stats!";
