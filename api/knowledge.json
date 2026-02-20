@@ -40,7 +40,8 @@
             "Agno (Agent Framework)",
             "LLMs",
             "RAG (Retrieval-Augmented Generation)",
-            "AI Chatbots"
+            "AI Chatbots",
+            "Apify"
         ],
         "cloud_and_devops": [
             "Docker",
@@ -170,7 +171,8 @@
                         "Laravel",
                         "React.js",
                         "Meta API",
-                        "Third-party APIs"
+                        "Third-party APIs",
+                        "Apify"
                     ],
                     "responsibilities": [
                         "Integrated Meta API for Instagram user search",

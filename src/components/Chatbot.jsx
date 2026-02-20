@@ -106,6 +106,10 @@ const Chatbot = () => {
             return "Jayditch recently added Supabase to his stack! He's using it for real-time databases and modern backend-as-a-service features.";
         }
 
+        if (lowerQuery.includes('apify')) {
+            return "Jayditch uses Apify for powerful web scraping and data extraction workflows. It's a key part of his automation toolkit!";
+        }
+
         // Expanded Projects Context from Fallback
         if (lowerQuery.match(/\b(project|portfolio|build|app|website)\b/)) {
             return "He has built various projects like a Content Moderation Platform, HR Systems, and AI Image Generators. Ask about specific stats!";

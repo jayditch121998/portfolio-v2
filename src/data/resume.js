@@ -13,7 +13,7 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
     skills: {
         frameworks: ["Laravel", "React.js", "Node.js", "Material UI"],
         databases: ["MySQL", "MariaDB", "MongoDB", "Supabase"],
-        apis: ["n8n", "Make.com", "OpenAI (fine-tuning)", "RAG (Retrieval-Augmented Generation)", "AI Chatbots", "REST APIs", "Socket.io", "Automation"],
+        apis: ["n8n", "Make.com", "Apify", "OpenAI (fine-tuning)", "RAG (Retrieval-Augmented Generation)", "AI Chatbots", "REST APIs", "Socket.io", "Automation"],
         infrastructure: ["Docker", "CI/CD", "AWS (S3, EC2, RDS, Route 53)", "Redis"],
         languages: ["PHP", "JavaScript", "Python (Learning)"],
         versionControl: ["Git", "GitHub", "GitLab"],
@@ -22,7 +22,7 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
     skillDescriptions: {
         frameworks: "Frontend and backend frameworks for building scalable apps.",
         databases: "Relational and document databases used in production systems.",
-        apis: "Workflow automation, AI agents, and system orchestration.",
+        apis: "Workflow automation, web scraping with Apify, AI agents, and system orchestration.",
         infrastructure: "Cloud services, containerization, and deployment pipelines.",
         languages: "High-level programming languages for modern web development. Currently expanding my expertise with Python.",
         versionControl: "Source code management and team collaboration tools.",
@@ -166,7 +166,7 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
                 },
                 {
                     name: "Instagram and Tiktok reels data fetcher and analyzer",
-                    technologies: ["Meta API", "PHP", "Laravel", "React", "n8n", "OpenAI", "Third-party API"],
+                    technologies: ["Meta API", "PHP", "Laravel", "React", "n8n", "OpenAI", "Apify", "Third-party API"],
                     details: [
                         "Integrated Meta’s official API to search for Instagram users.",
                         "Utilized a third-party API to fetch Instagram and TikTok Reels content.",
