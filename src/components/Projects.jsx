@@ -27,7 +27,7 @@ const ProjectCard = ({ project }) => {
             clearTimeout(timer);
             window.removeEventListener('resize', checkOverflow);
         };
-    }, [project.details]);
+    }, [project.details, project.modules]);
 
     return (
         <div className="project-card-wrapper">
@@ -38,13 +38,30 @@ const ProjectCard = ({ project }) => {
                 </div>
 
                 <div className={`card-body ${hasOverflow ? 'is-overflowing' : ''}`}>
-                    <ul className="project-details" ref={listRef}>
-                        {project.details.map((detail, idx) => (
-                            <li key={idx}>
-                                {detail}
-                            </li>
+                    <div className="card-content" ref={listRef}>
+                        {project.tagline && (
+                            <p className="project-tagline">{project.tagline}</p>
+                        )}
+
+                        <ul className="project-details">
+                            {project.details.map((detail, idx) => (
+                                <li key={idx}>
+                                    {detail}
+                                </li>
+                            ))}
+                        </ul>
+
+                        {project.modules?.map((module, mIdx) => (
+                            <div className="project-module" key={mIdx}>
+                                <h4 className="module-title">{module.name}</h4>
+                                <ul className="project-details">
+                                    {module.details.map((detail, idx) => (
+                                        <li key={idx}>{detail}</li>
+                                    ))}
+                                </ul>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
 
                     {/* The hint is absolutely positioned at the bottom of card-body */}
                     {hasOverflow && (

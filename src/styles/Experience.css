@@ -321,8 +321,35 @@
     padding-left: 0.75rem;
 }
 
+.project-tagline-small {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+}
+
 .bullet-list {
     margin-bottom: 1.5rem;
+}
+
+/* Module groupings inside a single multi-domain project */
+.project-module-small {
+    margin-bottom: 1.25rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--border-color);
+}
+
+.module-name-small {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.project-module-small .bullet-list {
+    margin-bottom: 0;
 }
 
 .bullet-list li {

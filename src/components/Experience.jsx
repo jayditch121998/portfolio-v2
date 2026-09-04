@@ -104,11 +104,24 @@ const Experience = () => {
                                                         {job.projects.map((project, pIdx) => (
                                                             <div key={pIdx} className="project-detail-item">
                                                                 <h4 className="project-name-small">{project.name}</h4>
+                                                                {project.tagline && (
+                                                                    <p className="project-tagline-small">{project.tagline}</p>
+                                                                )}
                                                                 <ul className="bullet-list">
                                                                     {project.details.map((detail, dIdx) => (
                                                                         <li key={dIdx}>{detail}</li>
                                                                     ))}
                                                                 </ul>
+                                                                {project.modules?.map((module, mIdx) => (
+                                                                    <div key={mIdx} className="project-module-small">
+                                                                        <h5 className="module-name-small">{module.name}</h5>
+                                                                        <ul className="bullet-list">
+                                                                            {module.details.map((detail, dIdx) => (
+                                                                                <li key={dIdx}>{detail}</li>
+                                                                            ))}
+                                                                        </ul>
+                                                                    </div>
+                                                                ))}
                                                                 <div className="project-tech-mini">
                                                                     {project.technologies.map((tech, tIdx) => (
                                                                         <span key={tIdx} className="mini-tag">{tech}</span>

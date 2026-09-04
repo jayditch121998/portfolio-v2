@@ -93,20 +93,83 @@
                     ]
                 },
                 {
-                    "name": "Human Resource Management System",
-                    "description": "Designed and developed an HR management system to automate onboarding, leave management, payroll, and performance tracking.",
+                    "name": "NMS Apps — Enterprise HRIS Platform",
+                    "aliases": [
+                        "nmsapps",
+                        "NMS Apps",
+                        "nms.core.v2",
+                        "HR System",
+                        "Human Resource Management System"
+                    ],
+                    "description": "Company-wide HRIS built as a single Laravel + React platform split into three business domains: Human Resources, Attendance & Timekeeping, and Payroll & Finance. Serves the entire organization for employee records, biometric attendance, and Philippine-compliant payroll.",
+                    "role": "Core developer and maintainer, contributing major features across all three domains.",
                     "technologies": [
-                        "Laravel",
-                        "React.js",
+                        "Laravel 10",
+                        "PHP 8.1",
+                        "React.js 18",
                         "Material UI",
                         "MySQL",
+                        "MariaDB",
                         "Redis",
-                        "Docker"
+                        "Docker",
+                        "Vite",
+                        "REST APIs",
+                        "Laravel Sanctum",
+                        "Spatie Laravel Permission",
+                        "Maatwebsite Excel",
+                        "DomPDF",
+                        "n8n",
+                        "Telegram Bot API",
+                        "AWS S3",
+                        "AWS SES",
+                        "GitLab CI/CD",
+                        "Ansible"
+                    ],
+                    "modules": [
+                        {
+                            "name": "Human Resources",
+                            "description": "Employee records and organizational management.",
+                            "features": [
+                                "Employee 201 file management, company directory, departments, sections, ranks, and job-title settings",
+                                "Organizational chart, employee grouping with tags, and dynamic custom form fields that let HR extend employee records without code changes",
+                                "Leave credits, special leaves, and monetized leave handling",
+                                "Offenses, policies, and automated document mailing with configurable templates",
+                                "Help desk, knowledge base, patch notes, and patient chart modules",
+                                "Activity and user-log auditing across the platform"
+                            ]
+                        },
+                        {
+                            "name": "Attendance & Timekeeping",
+                            "description": "Biometric time capture through validated attendance records.",
+                            "features": [
+                                "Biometric/RFID time-log ingestion that processes raw device logs into validated attendance records via queued jobs",
+                                "Roster and schedule management with bulk upload and export",
+                                "Timesheets, breaksheets, tardiness, and overbreak tracking",
+                                "Filing and approval flows for overtime, rest-day work, leaves, suspensions, AWOL, and NCNS",
+                                "Cut-off automation that closes, recomputes, and unlocks attendance periods on schedule",
+                                "Time-log validator with automated Telegram and email notifiers that flag missing or malformed logs before payroll runs",
+                                "IP whitelisting and off-premise time-log detection"
+                            ]
+                        },
+                        {
+                            "name": "Payroll & Finance",
+                            "description": "Philippine-compliant payroll computation, statutory reporting, loans, and payslips.",
+                            "features": [
+                                "Payroll computation engine covering gross pay, night differential, overtime, rest-day, and holiday pay, with strict timezone handling for holiday overtime and rest-day boundaries",
+                                "Statutory Philippine contributions and reporting: SSS, PhilHealth, Pag-IBIG/HDMF, and BIR withholding tax with versioned contribution tables",
+                                "13th-month pay, last-pay/final-pay computation, payroll adjustments, and payroll movement reporting",
+                                "Full loan module: loan types, settings, amortization schedules, max-loanable rules, signature prerequisites, and a dedicated loan-status page with Telegram notifications",
+                                "Payslip generation with automated Telegram payslip distribution, payday scheduling, and annual/comparative-year summaries",
+                                "Government-mandated and internal reports with Excel and PDF export pipelines"
+                            ]
+                        }
                     ],
                     "responsibilities": [
-                        "Designed scalable database schemas for employee data",
-                        "Ensured secure handling of sensitive information",
-                        "Optimized queries for efficient data retrieval"
+                        "Architected shared foundations used by all three domains: role- and permission-based access control, OAuth SSO, queued jobs, Redis caching, and a reusable Excel/PDF report-export layer",
+                        "Designed scalable database schemas for employee, attendance, and payroll data",
+                        "Ensured secure handling of sensitive personnel and payroll information",
+                        "Optimized heavy queries for efficient data retrieval across large attendance and payroll datasets",
+                        "Integrated AI and workflow automation through assistant modules, an n8n client API, and Telegram-based notification delivery"
                     ]
                 },
                 {

@@ -72,7 +72,7 @@
 
 /* Expansion - Only if JS detects overflow */
 .project-card-wrapper:hover .project-card.is-expandable {
-    max-height: 2000px;
+    max-height: 4000px;
     height: auto;
     min-height: 100%;
     overflow: visible;
@@ -134,8 +134,36 @@
     overflow: visible;
 }
 
+.project-tagline {
+    font-size: 0.9rem;
+    color: var(--accent-primary);
+    font-style: italic;
+    margin-bottom: 0.9rem;
+    line-height: 1.5;
+}
+
 .project-details {
     list-style: none;
+}
+
+/* Module groupings inside a single multi-domain project card */
+.project-module {
+    margin-top: 1.25rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--border-color);
+}
+
+.project-card-wrapper:hover .project-module {
+    border-left-color: var(--accent-primary);
+}
+
+.module-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
 }
 
 .project-details li {
