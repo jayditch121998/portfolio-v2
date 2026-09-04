@@ -222,7 +222,57 @@
                                 "Applicant-pipeline features: application form settings, salary range configuration and validation, re-apply periods, blacklisting, job tags, and multi-language job titles",
                                 "Refactored applicant fetching and dashboard statistics into single reusable queries to remove duplicated logic and reduce query load",
                                 "Digital signature capture on offer documents and embedded exam results for assessment review",
-                                "File storage migration from NFS to AWS S3, plus the Supervisor queue workers running the analysis pipeline in production"
+                                "Supervisor queue worker running the analysis pipeline in production, added while assisting the DevOps team on the deployment side"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "NMS Accounts — Centralized Identity & SSO",
+                    "aliases": [
+                        "nms.accounts.v2",
+                        "NMS Accounts",
+                        "Accounts",
+                        "SSO",
+                        "Identity Platform"
+                    ],
+                    "description": "Central identity provider for the NMS platform ecosystem: a Laravel Passport OAuth2 server handling single sign-on, token issuance and revocation, per-platform access requests and approvals, device tracking, master-password overrides, breach-checked password policies, and the roles and permissions that client platforms consume over an API instead of reimplementing.",
+                    "role": "Full-stack contributor (not sole author): account management and RBAC features, support tooling, and deployment configuration assisted alongside the DevOps team.",
+                    "technologies": [
+                        "Laravel",
+                        "PHP",
+                        "React.js",
+                        "Material UI",
+                        "Laravel Passport",
+                        "OAuth2",
+                        "Laravel Sanctum",
+                        "Spatie Laravel Permission",
+                        "MySQL",
+                        "REST APIs",
+                        "Vite",
+                        "Docker",
+                        "Apache",
+                        "Ansible",
+                        "GitLab CI/CD"
+                    ],
+                    "modules": [
+                        {
+                            "name": "Account & Access Management",
+                            "description": "Administrator tooling for accounts, roles, and permissions.",
+                            "features": [
+                                "Manual account creation for administrators built end to end: validated form request, repository and service layers, a new v2 API endpoint, and the React dialog driving it",
+                                "Multi-select role filtering on user management with a matching permission and query scope, letting admins slice large user lists by several roles at once",
+                                "Fixes for account updates carrying role changes, plus a service method exposing roles to the core platform over the API",
+                                "Editable profile fields propagated through to the data server, with corrected loader and status flows"
+                            ]
+                        },
+                        {
+                            "name": "Support Tooling & Deployment Assistance",
+                            "description": "Support tooling, plus production configuration worked on in an assisting capacity.",
+                            "features": [
+                                "In-app support ticket submission posting into the resolve ticketing system, including route, permission, icon, and page wiring",
+                                "Assisting on deployment, helped trace SSO failures back to a virtual host setting and extended the config to serve the platform across two domains",
+                                "Helped keep the Docker image and CI pipeline in step with the core platform, including unblocking dependency installs in the build"
                             ]
                         }
                     ]
@@ -352,5 +402,8 @@
         "degree": "Bachelor of Science in Information Technology",
         "institution": "Saint Louis University",
         "period": "2015 - 2020"
+    },
+    "notes": {
+        "devops_positioning": "Not a DevOps engineer. Infrastructure and deployment exposure (Docker, CI/CD, Ansible, Apache, Supervisor, AWS) was learned by assisting the DevOps team, not by owning that role. Describe it as assisting or learned-on-the-job, never as a DevOps specialty."
     }
 }
