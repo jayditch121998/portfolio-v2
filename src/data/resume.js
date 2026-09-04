@@ -267,6 +267,58 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
                             ],
                         },
                     ],
+                },
+                {
+                    name: "Resolve — Ticketing & Workstream Platform",
+                    tagline: "Led development from an empty repository; now the ticketing system other NMS platforms file into.",
+                    technologies: [
+                        "Laravel 12",
+                        "Filament 4",
+                        "Livewire",
+                        "PHP 8.3",
+                        "MariaDB",
+                        "Redis",
+                        "Tailwind CSS",
+                        "Vite",
+                        "Docker",
+                        "Nginx",
+                        "AWS S3",
+                        "OAuth SSO",
+                        "Spatie Permissions",
+                        "Filament Shield",
+                        "REST APIs",
+                        "Kubernetes",
+                        "GitLab CI/CD",
+                    ],
+                    details: [
+                        "Led development of Resolve from scratch — an internal ticketing and workstream platform built on Laravel 12 and Filament 4 with a public Livewire portal, now integrated into other NMS applications.",
+                        "Owned the domain model and the full feature arc: tickets and history, kanban workstreams, sprint boards, effort tracking, notifications, SSO, and an external API.",
+                        "Handled the application-side production configuration — environment variables, mailer, Redis queueing, resource requests — assisting the platform team that owns the Kubernetes deployment.",
+                    ],
+                    modules: [
+                        {
+                            name: "Ticketing & Workstreams",
+                            details: [
+                                "Designed the core ticketing domain from the ground up — tickets, groups, history, sources, and origins, with typed enums for status, type, prioritization, and weight — alongside its migrations, factories, and seeders.",
+                                "Built a public-facing Livewire portal where anyone can submit and track a ticket without an account, including a rich text editor and file attachments.",
+                                "Built the Filament admin panel with custom branding, ticket management, and admin-side file viewing and upload.",
+                                "Added kanban workstream boards and sprint boards with per-board access control, plus a scheduled job that promotes expired sprint tickets back to the backlog.",
+                                "Implemented effort tracking through a Livewire timer with an exporter for reporting.",
+                                "Added shareable public links for ticket groupings so stakeholders can follow a set of tickets without an account.",
+                            ],
+                        },
+                        {
+                            name: "Routing, Notifications & Integration",
+                            details: [
+                                "Built department-based ticket routing that assigns a ticket to every member of a department role and records the assignment in ticket history.",
+                                "Implemented ticket history tracking with email notifications on creation, assignment, and resolution, queued through Redis.",
+                                "Built an email OTP verification flow for the public portal, with domain-allowlisted login.",
+                                "Integrated NMS Accounts v2 SSO across multiple domains with a dual sign-in path — users authenticate with either a Resolve account or their NMS account — including first-login linking and redirect handling.",
+                                "Exposed an external ticket API secured by a shared-secret header, addressing tickets by their public reference, with published API documentation.",
+                                "Wrote the developer README so new contributors can run the whole Docker stack through a Makefile without local PHP, Composer, or Node.",
+                            ],
+                        },
+                    ],
                 }
 
             ],

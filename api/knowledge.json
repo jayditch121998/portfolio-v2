@@ -278,6 +278,65 @@
                     ]
                 },
                 {
+                    "name": "Resolve — Ticketing & Workstream Platform",
+                    "aliases": [
+                        "resolve",
+                        "Resolve",
+                        "Resolve ticketing",
+                        "ticketing system"
+                    ],
+                    "description": "Internal ticketing and workstream platform built on Laravel 12 and Filament 4 with a public Livewire portal. Covers ticket intake and tracking, kanban workstreams, sprint boards, effort tracking, department routing, and an external API that other NMS applications file tickets into.",
+                    "role": "Led development from scratch and is the top contributor; owned the domain model and the full feature arc.",
+                    "technologies": [
+                        "Laravel 12",
+                        "Filament 4",
+                        "Livewire",
+                        "PHP 8.3",
+                        "MariaDB",
+                        "Redis",
+                        "Tailwind CSS",
+                        "Vite",
+                        "Docker",
+                        "Nginx",
+                        "AWS S3",
+                        "OAuth SSO",
+                        "Spatie Laravel Permission",
+                        "Filament Shield",
+                        "REST APIs",
+                        "Kubernetes",
+                        "GitLab CI/CD"
+                    ],
+                    "modules": [
+                        {
+                            "name": "Ticketing & Workstreams",
+                            "description": "Core ticketing domain, public portal, and board tooling.",
+                            "features": [
+                                "Core ticketing domain designed from the ground up: tickets, groups, history, sources, and origins, with typed enums for status, type, prioritization, and weight, alongside migrations, factories, and seeders",
+                                "Public-facing Livewire portal where anyone can submit and track a ticket without an account, including a rich text editor and file attachments",
+                                "Filament admin panel with custom branding, ticket management, and admin-side file viewing and upload",
+                                "Kanban workstream boards and sprint boards with per-board access control, plus a scheduled job promoting expired sprint tickets back to the backlog",
+                                "Effort tracking through a Livewire timer with an exporter for reporting",
+                                "Shareable public links for ticket groupings so stakeholders can follow a set of tickets without an account"
+                            ]
+                        },
+                        {
+                            "name": "Routing, Notifications & Integration",
+                            "description": "Assignment logic, notifications, SSO, and the external API.",
+                            "features": [
+                                "Department-based ticket routing that assigns a ticket to every member of a department role and records the assignment in ticket history",
+                                "Ticket history tracking with email notifications on creation, assignment, and resolution, queued through Redis",
+                                "Email OTP verification flow for the public portal, with domain-allowlisted login",
+                                "NMS Accounts v2 SSO integration across multiple domains with a dual sign-in path (Resolve account or NMS account), including first-login linking and redirect handling",
+                                "External ticket API secured by a shared-secret header, addressing tickets by public reference, with published API documentation",
+                                "Developer README letting new contributors run the whole Docker stack through a Makefile without local PHP, Composer, or Node"
+                            ]
+                        }
+                    ],
+                    "responsibilities": [
+                        "Application-side production configuration (environment variables, mailer, Redis queueing, resource requests), assisting the platform team that owns the Kubernetes deployment"
+                    ]
+                },
+                {
                     "name": "Lead Generation System",
                     "description": "Built a platform to automate collecting, managing, and tracking leads from multiple channels.",
                     "technologies": [
