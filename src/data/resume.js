@@ -174,20 +174,54 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
                     ],
                 },
                 {
-                    name: "Recruitment System",
+                    name: "Recruitment System — AI-Assisted Hiring Platform",
+                    tagline: "Joined an established platform as a backend contributor and owned the AI resume-screening pipeline.",
                     technologies: [
                         "Laravel",
+                        "PHP",
                         "React.js",
+                        "MaterialUI",
                         "MySQL",
+                        "REST APIs",
+                        "Queued Jobs",
+                        "Supervisor",
+                        "AI Agent API",
+                        "AWS S3",
                         "Docker",
-                        "Rest APIs",
-                        "MaterialUI"
+                        "GitLab CI/CD",
+                        "Spatie Permissions",
+                        "OAuth",
+                        "DomPDF",
+                        "ECharts",
                     ],
                     details: [
-                        "Led the development of full-stack features to modernize the recruitment process, building intuitive user interfaces and robust backend logic.",
-                        "Integrated advanced AI-driven automation to assist in filtering and evaluating candidate applications, significantly cutting down manual screening time.",
-                        "Successfully bridged the platform with various third-party APIs to handle external candidate data and automated communication flows.",
-                        "Collaborated on refining the recruitment pipeline, ensuring a smooth and responsive experience for both recruiters and applicants."
+                        "Contributed to an existing recruitment platform rather than building it from scratch, delivering backend features across the applicant pipeline and owning the AI screening layer end to end.",
+                        "Built the service-to-service integrations that keep the platform in sync with the HR system and external client systems.",
+                    ],
+                    modules: [
+                        {
+                            name: "AI Resume Screening",
+                            details: [
+                                "Built an asynchronous CV analysis pipeline: a queued job submits the resume to an AI agent API and stores the returned request ID and status URL, while a polling job retries on a 30-second backoff up to 10 attempts until the analysis resolves.",
+                                "Implemented batch resume analysis with guard rails that reject applicants already mid-analysis and job titles whose scoring configuration is inactive, returning actionable conflict responses to the UI.",
+                                "Designed per-job-title scoring configuration — skill rating categories, weighted score percentages, and configurable recommendation-level bands that map a score to a hiring recommendation.",
+                                "Added an audit log capturing every manual score override with its previous value, new value, and the reason given.",
+                                "Made candidates sortable by AI score percentage so recruiters can triage a batch by fit.",
+                                "Wrote an interactive Artisan setup command that provisions the AI agent step by step: application token, tenant creation, agent template fetch, agent registration, and verification.",
+                                "Handled failure states explicitly — failed analyses, max-attempts-reached, and malformed AI responses are all recorded rather than silently dropped.",
+                            ],
+                        },
+                        {
+                            name: "Backend & Integrations",
+                            details: [
+                                "Built a queued service handshake that syncs departments and job titles between the recruitment platform and the HR system.",
+                                "Exposed an external client API letting partner systems create and update departments, job titles, interviewer bookings, and applicant statuses.",
+                                "Implemented applicant-pipeline features including application form settings, salary range configuration and validation, re-apply periods, blacklisting, job tags, and multi-language job titles.",
+                                "Refactored applicant fetching and dashboard statistics into single reusable queries to remove duplicated logic and reduce query load.",
+                                "Added digital signature capture on offer documents and embedded exam results for assessment review.",
+                                "Migrated file storage from NFS to AWS S3 and configured the Supervisor queue workers running the analysis pipeline in production.",
+                            ],
+                        },
                     ],
                 }
 

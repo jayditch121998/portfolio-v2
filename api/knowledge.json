@@ -172,6 +172,62 @@
                     ]
                 },
                 {
+                    "name": "Recruitment System — AI-Assisted Hiring Platform",
+                    "aliases": [
+                        "recruitment.nmsapps",
+                        "Recruitment System",
+                        "Recruitment Platform",
+                        "ATS"
+                    ],
+                    "description": "Applicant tracking and hiring platform with an AI resume-screening layer that scores candidates against per-job-title skill configurations and surfaces a hiring recommendation to recruiters.",
+                    "role": "Backend contributor on an existing platform (not built from scratch); owned the AI resume-screening pipeline end to end and the service-to-service integrations.",
+                    "technologies": [
+                        "Laravel",
+                        "PHP",
+                        "React.js",
+                        "Material UI",
+                        "MySQL",
+                        "REST APIs",
+                        "Queued Jobs",
+                        "Supervisor",
+                        "AI Agent API",
+                        "AWS S3",
+                        "Docker",
+                        "GitLab CI/CD",
+                        "Spatie Laravel Permission",
+                        "OAuth",
+                        "DomPDF",
+                        "ECharts"
+                    ],
+                    "modules": [
+                        {
+                            "name": "AI Resume Screening",
+                            "description": "Asynchronous CV analysis and candidate scoring.",
+                            "features": [
+                                "Asynchronous CV analysis pipeline: a queued job submits the resume to an AI agent API and stores the returned request ID and status URL, while a polling job retries on a 30-second backoff up to 10 attempts until the analysis resolves",
+                                "Batch resume analysis with guard rails that reject applicants already mid-analysis and job titles whose scoring configuration is inactive, returning actionable conflict responses to the UI",
+                                "Per-job-title scoring configuration: skill rating categories, weighted score percentages, and configurable recommendation-level bands that map a score to a hiring recommendation",
+                                "Audit log capturing every manual score override with its previous value, new value, and the reason given",
+                                "Candidate sorting by AI score percentage so recruiters can triage a batch by fit",
+                                "Interactive Artisan setup command that provisions the AI agent step by step: application token, tenant creation, agent template fetch, agent registration, and verification",
+                                "Explicit failure-state handling for failed analyses, max-attempts-reached, and malformed AI responses"
+                            ]
+                        },
+                        {
+                            "name": "Backend & Integrations",
+                            "description": "Applicant pipeline features and cross-system integration.",
+                            "features": [
+                                "Queued service handshake syncing departments and job titles between the recruitment platform and the HR system",
+                                "External client API letting partner systems create and update departments, job titles, interviewer bookings, and applicant statuses",
+                                "Applicant-pipeline features: application form settings, salary range configuration and validation, re-apply periods, blacklisting, job tags, and multi-language job titles",
+                                "Refactored applicant fetching and dashboard statistics into single reusable queries to remove duplicated logic and reduce query load",
+                                "Digital signature capture on offer documents and embedded exam results for assessment review",
+                                "File storage migration from NFS to AWS S3, plus the Supervisor queue workers running the analysis pipeline in production"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "Lead Generation System",
                     "description": "Built a platform to automate collecting, managing, and tracking leads from multiple channels.",
                     "technologies": [
