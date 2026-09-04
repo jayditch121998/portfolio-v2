@@ -102,7 +102,10 @@ const Experience = () => {
                                                 {job.projects && (
                                                     <div className="projects-grid-internal">
                                                         {job.projects.map((project, pIdx) => (
-                                                            <div key={pIdx} className="project-detail-item">
+                                                            <div
+                                                                key={pIdx}
+                                                                className={`project-detail-item ${project.modules ? 'is-wide' : ''}`}
+                                                            >
                                                                 <h4 className="project-name-small">{project.name}</h4>
                                                                 {project.tagline && (
                                                                     <p className="project-tagline-small">{project.tagline}</p>
@@ -112,16 +115,20 @@ const Experience = () => {
                                                                         <li key={dIdx}>{detail}</li>
                                                                     ))}
                                                                 </ul>
-                                                                {project.modules?.map((module, mIdx) => (
-                                                                    <div key={mIdx} className="project-module-small">
-                                                                        <h5 className="module-name-small">{module.name}</h5>
-                                                                        <ul className="bullet-list">
-                                                                            {module.details.map((detail, dIdx) => (
-                                                                                <li key={dIdx}>{detail}</li>
-                                                                            ))}
-                                                                        </ul>
+                                                                {project.modules && (
+                                                                    <div className="project-modules-row">
+                                                                        {project.modules.map((module, mIdx) => (
+                                                                            <div key={mIdx} className="project-module-small">
+                                                                                <h5 className="module-name-small">{module.name}</h5>
+                                                                                <ul className="bullet-list">
+                                                                                    {module.details.map((detail, dIdx) => (
+                                                                                        <li key={dIdx}>{detail}</li>
+                                                                                    ))}
+                                                                                </ul>
+                                                                            </div>
+                                                                        ))}
                                                                     </div>
-                                                                ))}
+                                                                )}
                                                                 <div className="project-tech-mini">
                                                                     {project.technologies.map((tech, tIdx) => (
                                                                         <span key={tIdx} className="mini-tag">{tech}</span>

@@ -7,12 +7,21 @@ const ProjectCard = ({ project }) => {
     const listRef = useRef(null);
     const [hasOverflow, setHasOverflow] = useState(false);
 
+    // Multi-domain projects take a full row and size to their content,
+    // so they never clip and never need the hover-to-expand behaviour.
+    const isWide = Boolean(project.modules);
+
     // Measure only the content's natural scrollHeight.
     // We compare it to a fixed safe threshold (280px) which is the max space
     // available for bullets in a standard 480px card height.
     // This measurement is persistent and doesn't change when the card expands.
     useLayoutEffect(() => {
         const checkOverflow = () => {
+            if (isWide) {
+                setHasOverflow(false);
+                return;
+            }
+
             if (listRef.current) {
                 const contentHeight = listRef.current.scrollHeight;
                 // Threshold is based on 480px total - header (100px) - footer (100px) = ~280px
@@ -27,10 +36,10 @@ const ProjectCard = ({ project }) => {
             clearTimeout(timer);
             window.removeEventListener('resize', checkOverflow);
         };
-    }, [project.details, project.modules]);
+    }, [project.details, project.modules, isWide]);
 
     return (
-        <div className="project-card-wrapper">
+        <div className={`project-card-wrapper ${isWide ? 'is-wide' : ''}`}>
             <div className={`project-card ${hasOverflow ? 'is-expandable' : ''}`}>
                 <div className="card-header">
                     <h3 className="card-title">{project.name}</h3>
@@ -51,16 +60,20 @@ const ProjectCard = ({ project }) => {
                             ))}
                         </ul>
 
-                        {project.modules?.map((module, mIdx) => (
-                            <div className="project-module" key={mIdx}>
-                                <h4 className="module-title">{module.name}</h4>
-                                <ul className="project-details">
-                                    {module.details.map((detail, idx) => (
-                                        <li key={idx}>{detail}</li>
-                                    ))}
-                                </ul>
+                        {project.modules && (
+                            <div className="project-modules-row">
+                                {project.modules.map((module, mIdx) => (
+                                    <div className="project-module" key={mIdx}>
+                                        <h4 className="module-title">{module.name}</h4>
+                                        <ul className="project-details">
+                                            {module.details.map((detail, idx) => (
+                                                <li key={idx}>{detail}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+                        )}
                     </div>
 
                     {/* The hint is absolutely positioned at the bottom of card-body */}

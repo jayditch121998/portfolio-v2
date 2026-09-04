@@ -332,9 +332,20 @@
     margin-bottom: 1.5rem;
 }
 
+/* A multi-domain project spans the full row instead of one narrow column */
+.project-detail-item.is-wide {
+    grid-column: 1 / -1;
+}
+
 /* Module groupings inside a single multi-domain project */
+.project-modules-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .project-module-small {
-    margin-bottom: 1.25rem;
     padding-left: 0.75rem;
     border-left: 2px solid var(--border-color);
 }
