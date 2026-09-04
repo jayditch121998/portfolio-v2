@@ -6,7 +6,9 @@ import FadeInSection from './FadeInSection';
 
 const Experience = () => {
     const { skills, experience } = resumeData;
-    const [expandedIndex, setExpandedIndex] = useState(null);
+    // The timeline is now the only place project detail lives, so open the
+    // most recent role by default instead of landing on an all-collapsed list.
+    const [expandedIndex, setExpandedIndex] = useState(0);
 
     const toggleExpand = (index) => {
         setExpandedIndex(expandedIndex === index ? null : index);

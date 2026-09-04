@@ -91,7 +91,7 @@ const Chatbot = () => {
 
         // Specific Tech Checks
         if (lowerQuery.includes('react') || lowerQuery.includes('javascript') || lowerQuery.includes('node')) {
-            return "Yes! Jayditch has extensive experience with the React/Node.js ecosystem. Check out his projects section for examples.";
+            return "Yes! Jayditch has extensive experience with the React/Node.js ecosystem. Check out his experience section for examples.";
         }
 
         if (lowerQuery.includes('php') || lowerQuery.includes('laravel')) {
