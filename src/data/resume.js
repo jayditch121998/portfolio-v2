@@ -9,24 +9,24 @@ export const resumeData = {
     },
     summary: `Full-stack developer with 4+ years of experience building and maintaining scalable web applications. I’ve worked on high-traffic platforms, developing robust backend systems with Node.js, Laravel, and MySQL, and crafting responsive, modern frontends using React.js and Material-UI (MUI). Skilled in designing efficient database schemas and integrating RESTful APIs.
 
-Actively leveraging AI-driven development tools like Antigravity and Cursor to streamline full-stack engineering across both frontend and backend, while building custom AI automation solutions and multi-agent workflows to enhance productivity and streamline complex processes.`,
+Actively leveraging AI-driven development tools — primarily Claude Code, alongside Antigravity and Cursor — to streamline full-stack engineering across both frontend and backend, while building custom AI automation solutions and multi-agent workflows to enhance productivity and streamline complex processes.`,
     skills: {
         frameworks: ["Laravel", "React.js", "Node.js", "Material UI"],
         databases: ["MySQL", "MariaDB", "MongoDB", "Supabase"],
         apis: ["n8n", "Make.com", "Apify", "OpenAI (fine-tuning)", "RAG (Retrieval-Augmented Generation)", "AI Chatbots", "REST APIs", "Socket.io", "Automation"],
         infrastructure: ["Docker", "CI/CD", "AWS (S3, EC2, RDS, Route 53)", "Redis"],
-        languages: ["PHP", "JavaScript", "Python (Learning)"],
+        languages: ["PHP", "JavaScript"],
         versionControl: ["Git", "GitHub", "GitLab"],
-        aiTools: ["Antigravity", "Cursor"],
+        aiTools: ["Claude Code", "Antigravity", "Cursor"],
     },
     skillDescriptions: {
         frameworks: "Frontend and backend frameworks for building scalable apps.",
         databases: "Relational and document databases used in production systems.",
         apis: "Workflow automation, web scraping with Apify, AI agents, and system orchestration.",
         infrastructure: "Cloud services, containerization, and deployment pipelines.",
-        languages: "High-level programming languages for modern web development. Currently expanding my expertise with Python.",
+        languages: "High-level programming languages for modern web development.",
         versionControl: "Source code management and team collaboration tools.",
-        aiTools: "Advanced AI-powered environments like Antigravity and Cursor for accelerated Front and Back-end development.",
+        aiTools: "Claude Code as my primary agentic coding tool, alongside Antigravity and Cursor, for accelerated front-end and back-end development.",
     },
     experience: [
         {
@@ -270,7 +270,7 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
                 },
                 {
                     name: "Resolve — Ticketing & Workstream Platform",
-                    tagline: "Led development from an empty repository; now the ticketing system other NMS platforms file into.",
+                    tagline: "Led the application development from the first commit; now the ticketing system other NMS platforms file into.",
                     technologies: [
                         "Laravel 12",
                         "Filament 4",
@@ -281,19 +281,16 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
                         "Tailwind CSS",
                         "Vite",
                         "Docker",
-                        "Nginx",
                         "AWS S3",
                         "OAuth SSO",
                         "Spatie Permissions",
                         "Filament Shield",
                         "REST APIs",
-                        "Kubernetes",
-                        "GitLab CI/CD",
                     ],
                     details: [
-                        "Led development of Resolve from scratch — an internal ticketing and workstream platform built on Laravel 12 and Filament 4 with a public Livewire portal, now integrated into other NMS applications.",
+                        "Led development of the Resolve application from scratch — an internal ticketing and workstream platform built on Laravel 12 and Filament 4 with a public Livewire portal, now integrated into other NMS applications.",
                         "Owned the domain model and the full feature arc: tickets and history, kanban workstreams, sprint boards, effort tracking, notifications, SSO, and an external API.",
-                        "Handled the application-side production configuration — environment variables, mailer, Redis queueing, resource requests — assisting the platform team that owns the Kubernetes deployment.",
+                        "Scope note: this was application development. The CI/CD pipeline and Kubernetes infrastructure were built and owned by the DevOps team — I assisted and contributed on that side, handling application-level configuration such as environment variables, mailer setup, and Redis queueing.",
                     ],
                     modules: [
                         {
@@ -389,25 +386,6 @@ Actively leveraging AI-driven development tools like Antigravity and Cursor to s
                 },
             ],
             otherResponsibilities: ["Code Documentation", "Assist across platforms"],
-        },
-        {
-            role: "Independent Learner",
-            company: "Personal Projects",
-            type: "Self-Paced",
-            period: "Ongoing",
-            location: "Remote",
-            summary: "Expanding my stack with Supabase for real-time databases and building tools to learn Python and agentic AI frameworks.",
-            projects: [
-                {
-                    name: "Facebook Job Ad Poster",
-                    technologies: ["Python", "Agno", "AI Agents"],
-                    details: [
-                        "Built an automated tool to post job ads on Facebook using Python.",
-                        "Leveraged the Agno framework to implement agentic behaviors.",
-                        "This is a learning project demonstrating initial proficiency with Python and AI agents.",
-                    ]
-                }
-            ]
         },
     ],
     education: [

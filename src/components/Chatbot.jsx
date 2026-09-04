@@ -98,10 +98,6 @@ const Chatbot = () => {
             return "Absolutely. Jayditch has used Laravel for several enterprise-level projects, including HR and Content Moderation systems.";
         }
 
-        if (lowerQuery.includes('python')) {
-            return "Jayditch is currently learning Python to expand his capabilities in AI and data science.";
-        }
-
         if (lowerQuery.includes('supabase')) {
             return "Jayditch recently added Supabase to his stack! He's using it for real-time databases and modern backend-as-a-service features.";
         }
