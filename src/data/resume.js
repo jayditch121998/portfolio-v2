@@ -33,7 +33,7 @@ Actively leveraging AI-driven development tools — primarily Claude Code, along
             company: "POP AI Technologies",
             role: "AI Automation Engineer",
             type: "Full-time | Office-based",
-            period: "March 2025 - Present",
+            period: "March 2025 - March 2026",
             location: "Baguio City",
             summary: "Implemented multi-agent architectures with clear role separation (intent parsing, validation, execution, and response handling) to avoid hallucination and workflow conflicts.",
             projects: [
