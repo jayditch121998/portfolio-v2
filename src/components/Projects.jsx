@@ -7,9 +7,9 @@ const ProjectCard = ({ project }) => {
     const listRef = useRef(null);
     const [hasOverflow, setHasOverflow] = useState(false);
 
-    // Multi-domain projects take a full row and size to their content,
-    // so they never clip and never need the hover-to-expand behaviour.
-    const isWide = Boolean(project.modules);
+    // Multi-domain projects size to their own content, so they never clip
+    // and never need the hover-to-expand behaviour.
+    const hasModules = Boolean(project.modules);
 
     // Measure only the content's natural scrollHeight.
     // We compare it to a fixed safe threshold (280px) which is the max space
@@ -17,7 +17,7 @@ const ProjectCard = ({ project }) => {
     // This measurement is persistent and doesn't change when the card expands.
     useLayoutEffect(() => {
         const checkOverflow = () => {
-            if (isWide) {
+            if (hasModules) {
                 setHasOverflow(false);
                 return;
             }
@@ -36,10 +36,10 @@ const ProjectCard = ({ project }) => {
             clearTimeout(timer);
             window.removeEventListener('resize', checkOverflow);
         };
-    }, [project.details, project.modules, isWide]);
+    }, [project.details, project.modules, hasModules]);
 
     return (
-        <div className={`project-card-wrapper ${isWide ? 'is-wide' : ''}`}>
+        <div className={`project-card-wrapper ${hasModules ? 'has-modules' : ''}`}>
             <div className={`project-card ${hasOverflow ? 'is-expandable' : ''}`}>
                 <div className="card-header">
                     <h3 className="card-title">{project.name}</h3>

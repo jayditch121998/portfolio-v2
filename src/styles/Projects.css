@@ -36,19 +36,18 @@
     /* CRITICAL: Lift parent stacking context above other rows */
 }
 
-/* Multi-domain projects take the full row and size to their own content,
-   so their modules can sit side by side instead of stacking in one column. */
-.project-card-wrapper.is-wide {
-    grid-column: 1 / -1;
+/* Multi-domain projects stay in their grid column but size to their own
+   content, so the stacked modules are never clipped or hidden behind hover. */
+.project-card-wrapper.has-modules {
     height: auto;
 }
 
-.project-card-wrapper.is-wide .project-card {
+.project-card-wrapper.has-modules .project-card {
     position: relative;
     height: auto;
 }
 
-.project-card-wrapper.is-wide .card-body {
+.project-card-wrapper.has-modules .card-body {
     overflow: visible;
     mask-image: none;
     -webkit-mask-image: none;
@@ -167,7 +166,7 @@
 /* Module groupings inside a single multi-domain project card */
 .project-modules-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 1.25rem;
 }

@@ -102,10 +102,7 @@ const Experience = () => {
                                                 {job.projects && (
                                                     <div className="projects-grid-internal">
                                                         {job.projects.map((project, pIdx) => (
-                                                            <div
-                                                                key={pIdx}
-                                                                className={`project-detail-item ${project.modules ? 'is-wide' : ''}`}
-                                                            >
+                                                            <div key={pIdx} className="project-detail-item">
                                                                 <h4 className="project-name-small">{project.name}</h4>
                                                                 {project.tagline && (
                                                                     <p className="project-tagline-small">{project.tagline}</p>
