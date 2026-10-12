@@ -30,35 +30,6 @@ Actively leveraging AI-driven development tools — primarily Claude Code, along
     },
     experience: [
         {
-            company: "POP AI Technologies",
-            role: "AI Automation Engineer",
-            type: "Full-time | Office-based",
-            period: "March 2025 - March 2026",
-            location: "Baguio City",
-            summary: "Implemented multi-agent architectures with clear role separation (intent parsing, validation, execution, and response handling) to avoid hallucination and workflow conflicts.",
-            projects: [
-
-                {
-                    name: "Automation",
-                    technologies: ["n8n",
-                        "OpenAI fine-tuning",
-                        "JavaScript",
-                        "LLMs",
-                        "Meta",
-                        "Google (Sheet, Drive, Gmail, Calendar)",
-                        "Other Third-party APIs"],
-                    details: [
-                        "Architected multi-agent workflows with clear role separation (intent parsing, validation, execution, response generation).",
-                        "Built intent-parsing agents to strictly classify user requests (availability checks, event queries, schedule summaries) without hallucination or over-inference.",
-                        "Designed and implemented agent-based workflows for real-world automation and decision-making use cases.",
-                        "Implemented strict input validation and schema enforcement to prevent prompt drift and unreliable outputs.",
-                        "Integrated agents with Google Calendar, Webhooks, Google Sheets, and internal APIs for live data-driven actions.",
-                        "Optimized workflows to reduce latency and avoid agent overlap or duplicated execution under load."
-                    ],
-                },
-            ],
-        },
-        {
             company: "New Media Services",
             role: "Programmer",
             type: "Full-time | Office-based",
@@ -318,6 +289,35 @@ Actively leveraging AI-driven development tools — primarily Claude Code, along
                     ],
                 }
 
+            ],
+        },
+        {
+            company: "POP AI Technologies",
+            role: "AI Automation Engineer",
+            type: "Full-time | Office-based",
+            period: "March 2025 - March 2026",
+            location: "Baguio City",
+            summary: "Implemented multi-agent architectures with clear role separation (intent parsing, validation, execution, and response handling) to avoid hallucination and workflow conflicts.",
+            projects: [
+
+                {
+                    name: "Automation",
+                    technologies: ["n8n",
+                        "OpenAI fine-tuning",
+                        "JavaScript",
+                        "LLMs",
+                        "Meta",
+                        "Google (Sheet, Drive, Gmail, Calendar)",
+                        "Other Third-party APIs"],
+                    details: [
+                        "Architected multi-agent workflows with clear role separation (intent parsing, validation, execution, response generation).",
+                        "Built intent-parsing agents to strictly classify user requests (availability checks, event queries, schedule summaries) without hallucination or over-inference.",
+                        "Designed and implemented agent-based workflows for real-world automation and decision-making use cases.",
+                        "Implemented strict input validation and schema enforcement to prevent prompt drift and unreliable outputs.",
+                        "Integrated agents with Google Calendar, Webhooks, Google Sheets, and internal APIs for live data-driven actions.",
+                        "Optimized workflows to reduce latency and avoid agent overlap or duplicated execution under load."
+                    ],
+                },
             ],
         },
         {
