@@ -439,6 +439,35 @@
             ]
         }
     ],
+    "personal_projects": [
+        {
+            "name": "Finance Tracker",
+            "aliases": [
+                "financetracker",
+                "finance app",
+                "budget tracker"
+            ],
+            "description": "Solo side project: a responsive personal finance web app for logging income and expenses, monthly per-category budgets vs. actuals, and savings goals. Single user. Started as Laravel + Inertia, then rebuilt on Next.js.",
+            "technologies": [
+                "Next.js 16",
+                "React 19",
+                "TypeScript",
+                "Tailwind CSS v4",
+                "Supabase (Postgres, Auth, Row-Level Security)",
+                "Vercel",
+                "Zod",
+                "Vitest"
+            ],
+            "features": [
+                "Server Components streaming data behind Suspense",
+                "Server Actions with zod validation",
+                "Row-Level Security and composite foreign keys enforcing per-user data in the database",
+                "Budgets vs. actuals per category",
+                "Savings goals"
+            ],
+            "repo": "https://github.com/jayditch121998/FinanceTracker"
+        }
+    ],
     "education": {
         "degree": "Bachelor of Science in Information Technology",
         "institution": "Saint Louis University",

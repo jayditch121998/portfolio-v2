@@ -388,6 +388,18 @@ Actively leveraging AI-driven development tools — primarily Claude Code, along
             otherResponsibilities: ["Code Documentation", "Assist across platforms"],
         },
     ],
+    personalProjects: [
+        {
+            name: "Finance Tracker",
+            description: "A responsive personal finance web app to log income and expenses, track monthly budgets per category, and set savings goals.",
+            technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+            highlights: [
+                "Server Components stream data behind Suspense, so the page shell loads instantly.",
+                "Row-Level Security in Postgres keeps every record scoped to the signed-in user.",
+            ],
+            repo: "https://github.com/jayditch121998/FinanceTracker",
+        },
+    ],
     education: [
         {
             school: "Saint Louis University",
